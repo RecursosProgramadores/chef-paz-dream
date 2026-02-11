@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import AnimatedSection from '@/components/AnimatedSection';
+import PageTransition from '@/components/PageTransition';
 import { Phone, Instagram, Facebook, Mail, MapPin, Send } from 'lucide-react';
 
 const Contacto = () => {
@@ -15,6 +16,7 @@ const Contacto = () => {
   };
 
   return (
+    <PageTransition>
     <main className="pt-24">
       <section className="py-20 md:py-28 bg-background">
         <div className="container mx-auto px-6">
@@ -127,6 +129,7 @@ const Contacto = () => {
         </div>
       </section>
     </main>
+    </PageTransition>
   );
 };
 

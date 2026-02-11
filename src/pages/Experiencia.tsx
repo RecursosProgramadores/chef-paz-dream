@@ -1,5 +1,6 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import AnimatedSection from '@/components/AnimatedSection';
+import PageTransition from '@/components/PageTransition';
 import dishesGrid1 from '@/assets/dishes-grid-1.jpg';
 import restaurantInterior from '@/assets/restaurant-interior.jpg';
 import cocktail from '@/assets/cocktail.jpg';
@@ -16,6 +17,7 @@ const Experiencia = () => {
   const { t } = useLanguage();
 
   return (
+    <PageTransition>
     <main className="pt-24">
       {/* Header */}
       <section className="py-20 md:py-28 bg-background">
@@ -60,6 +62,7 @@ const Experiencia = () => {
         </div>
       </section>
     </main>
+    </PageTransition>
   );
 };
 

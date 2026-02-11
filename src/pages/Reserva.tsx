@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import AnimatedSection from '@/components/AnimatedSection';
+import PageTransition from '@/components/PageTransition';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { CalendarIcon, Send } from 'lucide-react';
@@ -57,6 +58,7 @@ const Reserva = () => {
   const labelClass = "font-sans-body text-sm font-medium text-foreground block mb-2";
 
   return (
+    <PageTransition>
     <main className="pt-24 pb-24 bg-background min-h-screen">
       <div className="container mx-auto px-6 max-w-2xl">
         <AnimatedSection>
@@ -187,6 +189,7 @@ const Reserva = () => {
         </AnimatedSection>
       </div>
     </main>
+    </PageTransition>
   );
 };
 
