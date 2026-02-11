@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logochef from '@/assets/logochef.png';
 
 const Header = () => {
   const { lang, setLang, t } = useLanguage();
@@ -27,29 +28,29 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-background/95 backdrop-blur-md shadow-lg py-3'
-          : 'bg-transparent py-5'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white shadow-sm ${scrolled ? 'py-3' : 'py-4'
+        }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="relative z-10">
-          <h1 className="font-serif text-2xl md:text-3xl font-bold tracking-tight text-primary">
-            Chef Paz
-          </h1>
+        <Link to="/" className="relative z-10 flex items-center">
+          <img
+            src={logochef}
+            alt="Chef Paz Logo"
+            className="h-12 md:h-14 w-auto object-contain"
+          />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-4">
           {navItems.map(item => (
             <Link
               key={item.path}
               to={item.path}
-              className={`font-sans-body text-sm font-medium tracking-wide uppercase transition-colors duration-300 hover:text-primary ${
-                location.pathname === item.path ? 'text-primary' : 'text-foreground/80'
-              }`}
+              className={`font-sans-body text-xs font-semibold tracking-widest uppercase transition-all duration-300 px-5 py-2.5 rounded-full ${location.pathname === item.path
+                  ? 'bg-primary text-white shadow-md'
+                  : 'text-foreground/70 hover:bg-primary/10 hover:text-primary'
+                }`}
             >
               {item.label}
             </Link>
@@ -57,10 +58,10 @@ const Header = () => {
         </nav>
 
         {/* Actions */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-3">
           <button
             onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
-            className="text-sm font-sans-body font-medium text-muted-foreground hover:text-foreground transition-colors px-2 py-1 rounded border border-border"
+            className="text-xs font-sans-body font-bold text-muted-foreground hover:text-primary transition-colors px-3 py-1.5 rounded-full border border-border bg-white"
           >
             {lang === 'es' ? 'EN' : 'ES'}
           </button>
@@ -75,7 +76,7 @@ const Header = () => {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden relative z-10 text-foreground"
+          className="md:hidden relative z-10 p-2 text-foreground transition-colors hover:text-primary"
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -95,9 +96,8 @@ const Header = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`font-sans-body text-lg font-medium tracking-wide uppercase ${
-                    location.pathname === item.path ? 'text-primary' : 'text-foreground/80'
-                  }`}
+                  className={`font-sans-body text-lg font-medium tracking-wide uppercase ${location.pathname === item.path ? 'text-primary' : 'text-foreground/80'
+                    }`}
                 >
                   {item.label}
                 </Link>
