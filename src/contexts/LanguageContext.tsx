@@ -87,6 +87,10 @@ const translations: Translations = {
   'reserva.pick.type': { es: 'Selecciona tipo', en: 'Select type' },
   'reserva.pick.guests': { es: 'Selecciona', en: 'Select' },
 
+  // Testimonials
+  'testimonials.title': { es: 'Lo Que Dicen Nuestros Huéspedes', en: 'What Our Guests Say' },
+  'testimonials.subtitle': { es: 'Historias de quienes han vivido la experiencia Chef Paz', en: 'Stories from those who have lived the Chef Paz experience' },
+
   // Footer
   'footer.rights': { es: 'Todos los derechos reservados', en: 'All rights reserved' },
   'footer.slogan': { es: 'Donde la gastronomía amazónica se vuelve arte', en: 'Where Amazonian gastronomy becomes art' },

@@ -1,5 +1,6 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import AnimatedSection from '@/components/AnimatedSection';
+import PageTransition from '@/components/PageTransition';
 import { Clock, Phone, Instagram, Facebook, Mail, ExternalLink } from 'lucide-react';
 import restaurantInterior from '@/assets/restaurant-interior.jpg';
 import dishesGrid1 from '@/assets/dishes-grid-1.jpg';
@@ -18,6 +19,7 @@ const Restaurante = () => {
   const { lang, t } = useLanguage();
 
   return (
+    <PageTransition>
     <main className="pt-24">
       {/* Hero */}
       <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
@@ -135,6 +137,7 @@ const Restaurante = () => {
         </div>
       </section>
     </main>
+    </PageTransition>
   );
 };
 
