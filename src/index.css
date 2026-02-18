@@ -47,6 +47,7 @@
     --sidebar-accent-foreground: 22 26% 14%;
     --sidebar-border: 33 25% 85%;
     --sidebar-ring: 14 69% 63%;
+    --coffee-dark: 20 20% 12%;
   }
 
   .dark {
@@ -79,6 +80,7 @@
     --sidebar-accent-foreground: 33 56% 96%;
     --sidebar-border: 22 20% 20%;
     --sidebar-ring: 14 69% 63%;
+    --coffee-dark: 20 20% 8%;
   }
 }
 

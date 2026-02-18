@@ -22,17 +22,19 @@ const translations: Translations = {
 
   // Story
   'story.title': { es: 'Nuestra Historia', en: 'Our Story' },
-  'story.p1': { es: 'Chef Paz nació de la pasión de Maritza Paz por compartir los sabores únicos de la Amazonía peruana con el mundo. Con más de 10 años de experiencia, ha transformado ingredientes ancestrales como el paiche, camu camu y aguaje en creaciones culinarias que celebran la biodiversidad de la selva.', en: 'Chef Paz was born from Maritza Paz\'s passion for sharing the unique flavors of the Peruvian Amazon with the world. With over 10 years of experience, she has transformed ancestral ingredients like paiche, camu camu, and aguaje into culinary creations that celebrate the jungle\'s biodiversity.' },
-  'story.p2': { es: 'Desde nuestro restaurante en el corazón de Iquitos, cada plato es un viaje sensorial por los ríos, bosques y tradiciones que hacen de la gastronomía amazónica una de las más fascinantes del planeta.', en: 'From our restaurant in the heart of Iquitos, every dish is a sensory journey through the rivers, forests, and traditions that make Amazonian gastronomy one of the most fascinating on the planet.' },
+  'story.p1': { es: 'En 2012, el chef Gabriel Garhy Nogueira Paz regresa a Iquitos tras su formación profesional en la Escuela Iberoamericana de Lima, con la visión de revalorizar la cocina amazónica desde una propuesta contemporánea y técnica. En 2013 funda Chef Paz Restaurant, un proyecto gastronómico que, a lo largo de más de una década, ha evolucionado bajo un enfoque de innovación constante, calidad estandarizada y mejora continua, consolidándose como un referente culinario en la región amazónica.', en: 'In 2012, Chef Gabriel Garhy Nogueira Paz returned to Iquitos after his professional training at the Escuela Iberoamericana in Lima, with a vision to revalue Amazonian cuisine through a contemporary and technical proposal. In 2013, he founded Chef Paz Restaurant, a gastronomic project that, over more than a decade, has evolved under a constant innovation approach, standardized quality, and continuous improvement, consolidating itself as a culinary benchmark in the Amazon region.' },
+  'story.p2': { es: 'Su trayectoria incluye participación en ferias nacionales e internacionales como Perú Mucho Gusto, así como el Premio a la Innovación 2023 por su propuesta basada en el ingrediente tucupí. En 2024 fue nominado a los Premios Summum en la categoría Restaurantes de la Amazonía, reconocimiento que posiciona a Chef Paz entre los mejores exponentes gastronómicos del país, reafirmando su compromiso con la excelencia y la identidad amazónica.', en: 'His career includes participation in national and international fairs such as Perú Mucho Gusto, as well as the 2023 Innovation Award for his proposal based on the tucupí ingredient. In 2024, he was nominated for the Summum Awards in the Amazon Restaurants category, a recognition that positions Chef Paz among the best gastronomic exponents in the country, reaffirming its commitment to excellence and Amazonian identity.' },
 
   // Timeline
   'timeline.title': { es: 'Nuestro Camino', en: 'Our Journey' },
-  'timeline.2013': { es: 'Nace Chef Paz en Iquitos con una pequeña cocina y un gran sueño', en: 'Chef Paz is born in Iquitos with a small kitchen and a big dream' },
-  'timeline.2015': { es: 'Reconocimiento como mejor restaurante amazónico emergente', en: 'Recognized as best emerging Amazonian restaurant' },
-  'timeline.2017': { es: 'Expansión del local y creación del menú degustación amazónico', en: 'Venue expansion and creation of the Amazonian tasting menu' },
-  'timeline.2019': { es: 'Participación en festivales gastronómicos internacionales', en: 'Participation in international gastronomic festivals' },
-  'timeline.2021': { es: 'Lanzamiento de nuestra línea de productos amazónicos artesanales', en: 'Launch of our artisanal Amazonian product line' },
-  'timeline.2024': { es: 'Consolidación como referente de la alta cocina amazónica en Perú', en: 'Established as a benchmark for haute Amazonian cuisine in Peru' },
+  'timeline.2023.nov': { es: 'Premio a la Innovación - Perú Mucho Gusto - Lima Nov 2023', en: 'Innovation Award - Perú Mucho Gusto - Lima Nov 2023' },
+  'timeline.2024.jul': { es: 'Perú Mucho Gusto Tacna - Julio 2024', en: 'Perú Mucho Gusto Tacna - July 2024' },
+  'timeline.2024.sep': { es: 'Nominación a los Premios Summum como Mejor Restaurante de la Amazonía - Setiembre 2024', en: 'Summum Awards Nomination as Best Restaurant of the Amazon - September 2024' },
+  'timeline.2024.nov': { es: 'Perú Mucho Gusto Lima - Noviembre 2024', en: 'Perú Mucho Gusto Lima - November 2024' },
+  'timeline.2025.jul': { es: 'Perú Mucho Gusto Tacna - Julio 2025', en: 'Perú Mucho Gusto Tacna - July 2025' },
+  'timeline.2025.sep': { es: 'Nominación a los Premios Summum como Mejor Restaurante de la Amazonía - Setiembre 2025', en: 'Summum Awards Nomination as Best Restaurant of the Amazon - September 2025' },
+  'timeline.2025.dic.loreto': { es: 'Revalidación de la Marca Loreto - Dic 2025', en: 'Loreto Brand Revalidation - Dec 2025' },
+  'timeline.2025.dic.tenedores': { es: 'Categorización del restaurante de 3 Tenedores - Dic 2025', en: '3 Forks Restaurant Categorization - Dec 2025' },
 
   // Experiencia
   'exp.title': { es: 'La Experiencia', en: 'The Experience' },
@@ -104,6 +106,15 @@ const translations: Translations = {
   // Testimonials
   'testimonials.title': { es: 'Lo Que Dicen Nuestros Huéspedes', en: 'What Our Guests Say' },
   'testimonials.subtitle': { es: 'Historias de quienes han vivido la experiencia Chef Paz', en: 'Stories from those who have lived the Chef Paz experience' },
+  'testimonials.p1.text': { es: 'Chef Paz logra interpretar la despensa amazónica con técnica y respeto. Aquí se siente identidad, producto y territorio en cada plato. Es una propuesta que aporta valor real a la cocina peruana contemporánea.', en: 'Chef Paz manages to interpret the Amazonian pantry with technique and respect. Here, identity, product, and territory are felt in every dish. It is a proposal that brings real value to contemporary Peruvian cuisine.' },
+  'testimonials.p1.author': { es: 'Pedro Miguel Schiaffino', en: 'Pedro Miguel Schiaffino' },
+  'testimonials.p2.text': { es: 'Es inspirador ver cómo un restaurante en la Amazonía eleva nuestros insumos locales a estándares nacionales. Chef Paz demuestra que desde regiones como Loreto se puede competir con excelencia gastronómica.', en: 'It is inspiring to see how a restaurant in the Amazon raises our local ingredients to national standards. Chef Paz proves that regions like Loreto can compete with gastronomic excellence.' },
+  'testimonials.p2.author': { es: 'George Forsyth', en: 'George Forsyth' },
+  'testimonials.p3.text': { es: 'La experiencia en Chef Paz es auténtica y sofisticada a la vez. Me encantó cómo combinan sabores amazónicos con una presentación elegante y moderna. Es un lugar al que definitivamente volvería.', en: 'The experience at Chef Paz is both authentic and sophisticated. I loved how they combine Amazonian flavors with an elegant and modern presentation. It is a place I would definitely return to.' },
+  'testimonials.p3.author': { es: 'Alondra García Miró', en: 'Alondra García Miró' },
+  'testimonials.reviews.title': { es: 'Reseñas', en: 'Reviews' },
+  'testimonials.reviews.tripadvisor': { es: 'Tripadvisor', en: 'Tripadvisor' },
+  'testimonials.reviews.google': { es: 'Google', en: 'Google' },
 
   // Footer
   'footer.rights': { es: 'Todos los derechos reservados', en: 'All rights reserved' },
