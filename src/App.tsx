@@ -8,6 +8,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingReserveButton from "@/components/FloatingReserveButton";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import Index from "./pages/Index";
 import Experiencia from "./pages/Experiencia";
 import Restaurante from "./pages/Restaurante";
@@ -44,6 +45,7 @@ const App = () => (
           <AnimatedRoutes />
           <Footer />
           <FloatingReserveButton />
+          <WhatsAppButton />
         </BrowserRouter>
       </LanguageProvider>
     </TooltipProvider>

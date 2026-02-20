@@ -4,8 +4,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { useRef } from 'react';
 import AnimatedSection from '@/components/AnimatedSection';
-import TestimonialsSection from '@/components/TestimonialsSection';
 import PageTransition from '@/components/PageTransition';
+import TropicalLeaf from '@/components/TropicalLeaf';
 import fondohero from '../assets/fondohero.png';
 import chefPortrait from '../assets/historia.png';
 import amazoniaBg from '../assets/amazonia-bg.jpg';
@@ -18,40 +18,18 @@ import heroDish from '../assets/hero-dish.jpg';
 
 
 const timelineData = [
-  { year: '2023', label: 'Nov', key: 'timeline.2023.nov', image: heroDish },
-  { year: '2024', label: 'Jul', key: 'timeline.2024.jul', image: interior },
-  { year: '2024', label: 'Set', key: 'timeline.2024.sep', image: dishes1 },
-  { year: '2024', label: 'Nov', key: 'timeline.2024.nov', image: cocktail },
-  { year: '2025', label: 'Jul', key: 'timeline.2025.jul', image: dishes2 },
-  { year: '2025', label: 'Set', key: 'timeline.2025.sep', image: heroDish },
-  { year: '2025', label: 'Dic', key: 'timeline.2025.dic.loreto', image: amazoniaBg },
-  { year: '2025', label: 'Dic', key: 'timeline.2025.dic.tenedores', image: interior },
+  { year: '2023', label: 'month.nov', key: 'timeline.2023.nov', image: heroDish },
+  { year: '2024', label: 'month.jul', key: 'timeline.2024.jul', image: interior },
+  { year: '2024', label: 'month.sep', key: 'timeline.2024.sep', image: dishes1 },
+  { year: '2024', label: 'month.nov', key: 'timeline.2024.nov', image: cocktail },
+  { year: '2025', label: 'month.jul', key: 'timeline.2025.jul', image: dishes2 },
+  { year: '2025', label: 'month.sep', key: 'timeline.2025.sep', image: heroDish },
+  { year: '2025', label: 'month.dec', key: 'timeline.2025.dic.loreto', image: amazoniaBg },
+  { year: '2025', label: 'month.dec', key: 'timeline.2025.dic.tenedores', image: interior },
 ];
 
 
-const TropicalLeaf = ({ className, delay = 0, scale = 1, rotate = 0 }: { className?: string, delay?: number, scale?: number, rotate?: number }) => (
-  <motion.div
-    initial={{ opacity: 0, scale: 0, rotate: rotate - 20 }}
-    animate={{
-      opacity: 0.6,
-      scale: scale,
-      rotate: [rotate - 5, rotate + 5, rotate - 5],
-      y: [0, -15, 0]
-    }}
-    transition={{
-      opacity: { duration: 1, delay },
-      scale: { duration: 1, delay },
-      rotate: { duration: 5, repeat: Infinity, ease: "easeInOut" },
-      y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: delay * 0.5 }
-    }}
-    className={`absolute pointer-events-none drop-shadow-xl ${className}`}
-  >
-    <svg viewBox="0 0 100 100" fill="currentColor" className="w-full h-full text-secondary/30">
-      <path d="M50 10 C30 10 10 30 10 50 C10 70 30 90 50 90 C70 90 90 70 90 50 C90 30 70 10 50 10 Z M50 20 C65 20 78 32 78 47 L78 53 C78 68 65 80 50 80 C35 80 22 68 22 53 L22 47 C22 32 35 20 50 20 Z" />
-      <path d="M50 15 L50 85 M50 30 L75 25 M50 45 L80 40 M50 60 L75 55 M50 30 L25 25 M50 45 L20 40 M50 60 L25 55" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-    </svg>
-  </motion.div>
-);
+
 
 const Index = () => {
   const { t } = useLanguage();
@@ -114,10 +92,10 @@ const Index = () => {
                   {t('hero.slogan')}
                 </motion.p>
                 <motion.p
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 1 }}
-                  className="font-sans-body text-muted-foreground text-base md:text-lg mb-10 max-w-xl"
+                  className="text-lg md:text-xl text-black font-sans-body mb-10 max-w-xl leading-relaxed"
                 >
                   {t('hero.tagline')}
                 </motion.p>
@@ -133,12 +111,6 @@ const Index = () => {
                   >
                     {t('hero.cta')}
                   </Link>
-                  <a
-                    href="#historia"
-                    className="border border-foreground/20 text-foreground px-10 py-4 rounded-md font-sans-body font-semibold text-sm uppercase tracking-widest hover:bg-foreground/5 transition-colors backdrop-blur-[2px] text-center"
-                  >
-                    {t('hero.discover')}
-                  </a>
                 </motion.div>
               </motion.div>
 
@@ -213,24 +185,23 @@ const Index = () => {
                 </p>
               </AnimatedSection>
               <AnimatedSection delay={0.2}>
-                <div className="relative">
+                <div className="relative flex justify-center lg:justify-end">
                   <motion.img
                     src={chefPortrait}
                     alt="Chef Gabriel Garhy Nogueira Paz"
-                    className="rounded-lg shadow-2xl w-full max-w-md mx-auto object-cover aspect-[3/4]"
-                    whileHover={{ scale: 1.03 }}
-                    transition={{ duration: 0.4 }}
+                    className="w-full max-w-xl h-auto object-contain z-10"
+                    style={{
+                      filter: 'drop-shadow(0 35px 50px rgba(98, 62, 39, 0.4))'
+                    }}
+                    whileHover={{ scale: 1.03, y: -8 }}
+                    transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                   />
-                  <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/20 rounded-lg -z-10" />
-                  <div className="absolute -top-6 -left-6 w-24 h-24 bg-accent/30 rounded-lg -z-10" />
                 </div>
               </AnimatedSection>
             </div>
           </div>
         </section>
 
-        {/* Testimonials */}
-        <TestimonialsSection />
 
         {/* Timeline with Multiple Items - Reference Structure */}
         <section ref={timelineRef} className="py-24 md:py-32 relative overflow-hidden bg-black/95">
@@ -278,7 +249,7 @@ const Index = () => {
                       </div>
                       <div className="flex-1 pt-1 whitespace-normal">
                         <span className="font-sans text-base text-primary/80 font-bold block mb-2 uppercase tracking-widest">
-                          {item.label}
+                          {t(item.label)}
                         </span>
                         <p className="font-sans-body text-background/80 text-sm md:text-base lg:text-lg leading-relaxed line-clamp-4">
                           {t(item.key)}
@@ -306,23 +277,7 @@ const Index = () => {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="py-24 bg-background text-center">
-          <AnimatedSection>
-            <h2 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-6">
-              {t('hero.cta')}
-            </h2>
-            <p className="font-sans-body text-muted-foreground text-lg mb-10 max-w-lg mx-auto">
-              {t('hero.tagline')}
-            </p>
-            <Link
-              to="/reserva"
-              className="inline-block bg-cta text-cta-foreground px-12 py-4 rounded-md font-sans-body font-semibold text-sm uppercase tracking-widest hover:opacity-90 transition-opacity"
-            >
-              {t('nav.reservar')}
-            </Link>
-          </AnimatedSection>
-        </section>
+
       </main>
     </PageTransition>
   );

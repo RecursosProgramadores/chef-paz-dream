@@ -1,194 +1,126 @@
-import { useState, useEffect, useCallback } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Star } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
+import testimonioImg from '@/assets/testimonio.png';
 
 const testimonials = [
   {
     key: 'testimonials.p1',
-    rating: 5,
+    blobPath: "M63.5,-52.7C77.4,-38.3,80.4,-11.2,74.1,11.5C67.8,34.2,52.1,52.4,32.7,61.9C13.2,71.4,-10.1,72.1,-30.9,64C-51.7,55.8,-69.9,38.8,-75.7,18.4C-81.5,-2.1,-74.8,-25.9,-60.1,-40.6C-45.4,-55.3,-22.7,-60.9,2.8,-64.3C28.3,-67.7,56.6,-68.8,63.5,-52.7Z",
+    morphPath: "M60.1,-63.3C72.6,-53.4,73.8,-29.4,70.5,-10.2C67.2,9,59.3,23.3,47.9,34C36.6,44.8,21.7,51.9,4.4,56.4C-12.9,60.8,-32.7,62.6,-45.5,54.2C-58.2,45.8,-64.1,27.1,-63.9,10.6C-63.7,-5.8,-57.4,-19.9,-47.9,-33C-38.4,-46.1,-25.7,-58.3,-9.6,-61.8C6.6,-65.4,22.1,-60.4,40.1,-60.8C58.1,-61.2,78.5,-66.9,60.1,-63.3Z"
   },
   {
     key: 'testimonials.p2',
-    rating: 5,
+    blobPath: "M55.2,-64.3C68.9,-54.6,75.3,-34.5,76.1,-15C76.9,4.4,72.1,23.1,61.8,37.3C51.5,51.5,35.7,61.1,18.8,65.3C1.9,69.5,-16.1,68.2,-31.2,60.9C-46.3,53.5,-58.6,40.1,-64.8,24.6C-71,9,-71.2,-8.7,-65.2,-24.1C-59.2,-39.5,-47,-52.7,-33,-62.3C-19.1,-71.9,-3.3,-77.9,11.9,-75.4C27,-72.9,41.5,-73.9,55.2,-64.3Z",
+    morphPath: "M51.9,-63.1C65,-51.1,70.6,-30.1,69.6,-11.2C68.6,7.6,60.9,24.4,49,36.5C37.1,48.6,21,56.1,3.4,57.1C-14.2,58.1,-33.3,52.6,-45.6,40.8C-57.9,29,-63.4,11,-61.8,-6C-60.1,-23,-51.2,-39,-38.3,-51.3C-25.5,-63.7,-8.7,-72.4,10.1,-73.3C28.8,-74.3,45.6,-67.4,51.9,-63.1Z"
   },
   {
     key: 'testimonials.p3',
-    rating: 5,
+    blobPath: "M56.4,-67.2C71.3,-58.4,80.5,-40.2,82.3,-22.1C84.1,-4,78.6,14,69.3,29.3C60,44.6,47,57.2,31.7,64.3C16.4,71.4,-1.2,72.9,-18.2,69.1C-35.3,65.3,-51.8,56.1,-62.7,42.4C-73.6,28.6,-78.9,10.3,-77.4,-7.3C-75.9,-24.8,-67.6,-41.5,-54.7,-51.5C-41.8,-61.4,-24.2,-64.6,-6.5,-68.4C11.3,-72.2,28.8,-76.6,46.4,-74C64,-71.3,71.3,-61.6,56.4,-67.2Z",
+    morphPath: "M45.7,-62.1C58.8,-51.4,66,-33.4,66.8,-15.8C67.6,1.8,61.9,19.1,51.4,33.1C40.9,47.1,25.6,57.8,8.2,60.9C-9.3,64,-28.9,59.6,-42.9,49.1C-56.9,38.6,-65.4,22,-66.3,4.9C-67.2,-12.3,-60.5,-30,-48.9,-41.9C-37.4,-53.8,-20.9,-59.9,-4.6,-61.4C11.6,-62.8,26.5,-59.6,45.7,-62.1Z"
   },
 ];
-
-const ReviewsBar = () => {
-  const { t } = useLanguage();
-
-  return (
-    <div className="mt-20 pt-12 border-t border-border/50 max-w-4xl mx-auto">
-      <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
-        {/* Main Rating */}
-        <div className="flex flex-col items-center md:items-start">
-          <span className="font-serif text-2xl font-bold text-foreground mb-2">
-            {t('testimonials.reviews.title')}
-          </span>
-          <div className="flex gap-0.5 text-primary">
-            <Star size={16} className="fill-current" />
-            <Star size={16} className="fill-current" />
-            <Star size={16} className="fill-current" />
-            <Star size={16} className="fill-current" />
-            <div className="relative overflow-hidden w-[8px]">
-              <Star size={16} className="fill-current" />
-            </div>
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div className="hidden md:block w-px h-16 bg-border/60 mx-4" />
-
-        {/* Platforms */}
-        <div className="flex flex-wrap justify-center gap-12 flex-1">
-          {/* TripAdvisor */}
-          <a
-            href="https://www.tripadvisor.com.pe/Restaurant_Review-g294315-d7216625-Reviews-Chef_Paz_Restaurant-Iquitos_Loreto_Region.html"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-4 group hover:scale-105 transition-transform"
-          >
-            <div className="w-12 h-12 rounded-full bg-[#34E0A1] flex items-center justify-center p-2.5">
-              <svg viewBox="0 0 24 24" fill="white" className="w-full h-full">
-                <path d="M14.5,10.1C13.1,10.1,12,11.2,12,12.6s1.1,2.5,2.5,2.5s2.5-1.1,2.5-2.5S15.9,10.1,14.5,10.1z M14.5,14.1 c-0.8,0-1.5-0.7-1.5-1.5s0.7-1.5,1.5-1.5s1.5,0.7,1.5,1.5S15.3,14.1,14.5,14.1z M9.5,10.1C8.1,10.1,7,11.2,7,12.6s1.1,2.5,2.5,2.5 s2.5-1.1,2.5-2.5S10.9,10.1,9.5,10.1z M9.5,14.1c-0.8,0-1.5-0.7-1.5-1.5s0.7-1.5,1.5-1.5s1.5,0.7,1.5,1.5S10.3,14.1,9.5,14.1z M12,2C6.5,2,2,6.5,2,12c0,5.5,4.5,10,10,10s10-4.5,10-10C22,6.5,17.5,2,12,2z M12,20c-4.4,0-8-3.6-8-8c0-4.4,3.6-8,8-8 s8,3.6,8,8C20,16.4,16.4,20,12,20z" />
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-sans font-bold text-sm text-foreground/80 leading-none mb-1">Tripadvisor</span>
-              <div className="flex items-center gap-1.5">
-                <div className="flex gap-0.5 text-amber-500">
-                  <Star size={10} className="fill-current" />
-                  <Star size={10} className="fill-current" />
-                  <Star size={10} className="fill-current" />
-                  <Star size={10} className="fill-current" />
-                  <Star size={10} />
-                </div>
-                <span className="text-[10px] font-bold text-muted-foreground">4.0 / 5</span>
-              </div>
-              <div className="flex items-center gap-1 mt-0.5">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3 text-muted-foreground">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                </svg>
-                <span className="text-[10px] font-bold text-muted-foreground">900+</span>
-              </div>
-            </div>
-          </a>
-
-          {/* Google */}
-          <a
-            href="https://maps.app.goo.gl/4Zao52WsgnqWM9y39"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-4 group hover:scale-105 transition-transform"
-          >
-            <div className="w-12 h-12 rounded-full bg-white border border-border flex items-center justify-center p-2.5 shadow-sm">
-              <svg viewBox="0 0 24 24" className="w-full h-full">
-                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
-                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-1 .67-2.28 1.07-3.71 1.07-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-                <path d="M5.84 14.09c-.22-.67-.35-1.38-.35-2.09s.13-1.42.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05" />
-                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-sans font-bold text-sm text-foreground/80 leading-none mb-1">Google</span>
-              <div className="flex items-center gap-1.5">
-                <div className="flex gap-0.5 text-amber-500">
-                  <Star size={10} className="fill-current" />
-                  <Star size={10} className="fill-current" />
-                  <Star size={10} className="fill-current" />
-                  <Star size={10} className="fill-current" />
-                  <div className="relative overflow-hidden w-[3px]">
-                    <Star size={10} className="fill-current" />
-                  </div>
-                </div>
-                <span className="text-[10px] font-bold text-muted-foreground">4.3 / 5</span>
-              </div>
-              <div className="flex items-center gap-1 mt-0.5">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3 h-3 text-muted-foreground">
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                </svg>
-                <span className="text-[10px] font-bold text-muted-foreground">1800+</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const TestimonialsSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-24 md:py-32 bg-card relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute top-12 left-12 text-primary/5 pointer-events-none">
-        <Quote size={180} />
-      </div>
-      <div className="absolute bottom-12 right-12 text-primary/5 rotate-180 pointer-events-none">
-        <Quote size={120} />
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="py-20 md:py-32 bg-[#FAFAF9] relative overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10 max-w-[1240px]">
         <AnimatedSection>
-          <div className="text-center mb-16 md:mb-20">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <div className="text-center mb-24 md:mb-40">
+            <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl text-[#1A1A1A] mb-6">
               {t('testimonials.title')}
             </h2>
-            <p className="font-sans-body text-muted-foreground text-lg max-w-2xl mx-auto">
-              {t('testimonials.subtitle')}
-            </p>
+            <div className="w-24 h-1 bg-primary mx-auto opacity-30" />
           </div>
         </AnimatedSection>
 
-        {/* 3-Column Grid for Testimonials */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 max-w-7xl mx-auto">
-          {testimonials.map((testimonial, i) => (
-            <AnimatedSection key={i} delay={i * 0.1}>
-              <div className="h-full flex flex-col bg-background/50 backdrop-blur-sm border border-border/50 p-8 rounded-2xl shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-300 group">
-                {/* Fixed Stars */}
-                <div className="flex gap-1 mb-6 text-accent">
-                  {Array.from({ length: testimonial.rating }).map((_, starIdx) => (
-                    <Star key={starIdx} size={18} className="fill-current" />
-                  ))}
-                </div>
+        <div className="space-y-24 md:space-y-40">
+          {testimonials.map((testimonial, i) => {
+            const isEven = i % 2 === 0;
+            return (
+              <AnimatedSection key={i} delay={0.2}>
+                <div className={`flex flex-col md:flex-row items-center gap-8 lg:gap-20 transition-all duration-500 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
 
-                {/* Quote Text */}
-                <blockquote className="flex-1 font-serif text-lg lg:text-xl text-foreground/90 leading-relaxed mb-8 italic">
-                  "{t(`${testimonial.key}.text`)}"
-                </blockquote>
+                  {/* Text Container */}
+                  <div className="w-full md:w-1/2 space-y-8 text-center md:text-left">
+                    <div className="flex gap-1.5 mb-2 justify-center md:justify-start">
+                      {[...Array(5)].map((_, idx) => (
+                        <Star key={idx} size={18} className="text-primary fill-primary" />
+                      ))}
+                    </div>
 
-                {/* Author Info */}
-                <div className="pt-6 border-t border-border/30">
-                  <div className="w-8 h-1 bg-primary/20 mb-3 group-hover:w-12 group-hover:bg-primary/40 transition-all duration-300" />
-                  <p className="font-sans-body font-bold text-foreground text-lg tracking-tight">
-                    {t(`${testimonial.key}.author`)}
-                  </p>
-                  <div className="mt-2 flex gap-1.5">
-                    <span className="w-1 h-1 rounded-full bg-primary/30" />
-                    <span className="w-1 h-1 rounded-full bg-primary/30" />
-                    <span className="w-1 h-1 rounded-full bg-primary/30" />
+                    <blockquote className="font-serif text-lg md:text-xl lg:text-2xl text-[#1A1A1A] leading-[1.4] italic font-medium">
+                      "{t(`${testimonial.key}.text`)}"
+                    </blockquote>
+
+                    <div className="pt-8">
+                      <p className="font-sans-body font-bold text-[#1A1A1A] text-xl lg:text-2xl md:border-l-4 border-primary md:pl-8">
+                        {t(`${testimonial.key}.author`)}
+                      </p>
+                      <p className="font-sans-body text-xs text-[#8E8E8E] uppercase tracking-[0.3em] mt-2 md:pl-8 font-semibold">
+                        {t(`${testimonial.key}.role`)}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </AnimatedSection>
-          ))}
-        </div>
 
-        {/* Reviews Bar Section */}
-        <div className="mt-20">
-          <ReviewsBar />
+                  {/* Image Container with Solid Organic Blob Background Identity */}
+                  <div className="w-full md:w-1/2 flex justify-center items-center">
+                    <div className="relative w-[280px] h-[280px] md:w-[420px] md:h-[420px] flex items-center justify-center group">
+
+                      {/* REFINED SOLID BLOB BACKGROUND - 'Tray' Platform Effect */}
+                      <div className="absolute inset-0 z-0 pointer-events-none scale-[1.2]">
+                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" className="w-full h-full filter drop-shadow-[0_25px_50px_rgba(0,0,0,0.5)]">
+                          <defs>
+                            {/* Refined Beige / Rose Gold Highlight */}
+                            <linearGradient id="glossyHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
+                              <stop offset="0%" stopColor="#F5E6D3" stopOpacity="0.3" />
+                              <stop offset="50%" stopColor="#623E27" stopOpacity="0" />
+                            </linearGradient>
+                          </defs>
+
+                          {/* The Main Solid Blob - Static */}
+                          <path
+                            fill="#623E27"
+                            d={testimonial.blobPath}
+                            transform="translate(100 100)"
+                          />
+
+                          {/* Refined Rim Highlight - Static */}
+                          <path
+                            fill="none"
+                            stroke="url(#glossyHighlight)"
+                            strokeWidth="2"
+                            d={testimonial.blobPath}
+                            transform="translate(100 100)"
+                            className="opacity-60"
+                          />
+                        </svg>
+                      </div>
+
+                      {/* Foreground Subject - Perfectly Preserved, Centered inside the 'Tray' */}
+                      <motion.div
+                        className="relative z-10 w-[65%] h-[65%] flex items-center justify-center"
+                      >
+                        <img
+                          src={testimonioImg}
+                          alt={t(`${testimonial.key}.author`)}
+                          className="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+                        />
+                      </motion.div>
+                    </div>
+                  </div>
+
+                </div>
+              </AnimatedSection>
+            );
+          })}
         </div>
       </div>
     </section>
   );
 };
-
 
 export default TestimonialsSection;

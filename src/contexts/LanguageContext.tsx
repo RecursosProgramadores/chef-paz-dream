@@ -18,7 +18,6 @@ const translations: Translations = {
   'hero.slogan': { es: 'Donde la gastronomía amazónica se vuelve arte', en: 'Where Amazonian gastronomy becomes art' },
   'hero.tagline': { es: 'Experiencia culinaria única en el corazón de la Amazonía peruana', en: 'A unique culinary experience in the heart of the Peruvian Amazon' },
   'hero.cta': { es: 'Reservar Mesa', en: 'Reserve a Table' },
-  'hero.discover': { es: 'Descubrir', en: 'Discover' },
 
   // Story
   'story.title': { es: 'Nuestra Historia', en: 'Our Story' },
@@ -35,6 +34,10 @@ const translations: Translations = {
   'timeline.2025.sep': { es: 'Nominación a los Premios Summum como Mejor Restaurante de la Amazonía - Setiembre 2025', en: 'Summum Awards Nomination as Best Restaurant of the Amazon - September 2025' },
   'timeline.2025.dic.loreto': { es: 'Revalidación de la Marca Loreto - Dic 2025', en: 'Loreto Brand Revalidation - Dec 2025' },
   'timeline.2025.dic.tenedores': { es: 'Categorización del restaurante de 3 Tenedores - Dic 2025', en: '3 Forks Restaurant Categorization - Dec 2025' },
+  'month.nov': { es: 'Nov', en: 'Nov' },
+  'month.jul': { es: 'Jul', en: 'Jul' },
+  'month.sep': { es: 'Set', en: 'Sep' },
+  'month.dec': { es: 'Dic', en: 'Dec' },
 
   // Experiencia
   'exp.title': { es: 'La Experiencia', en: 'The Experience' },
@@ -54,10 +57,24 @@ const translations: Translations = {
   'rest.carta.desc': { es: 'Explora nuestra selección de platos que celebran la biodiversidad amazónica', en: 'Explore our selection of dishes celebrating Amazonian biodiversity' },
   'rest.ver.carta': { es: 'Ver Carta Completa', en: 'View Full Menu' },
   'rest.horario': { es: 'Horario de Atención', en: 'Opening Hours' },
-  'rest.lun.vie': { es: 'Lunes a Viernes', en: 'Monday to Friday' },
-  'rest.sabado': { es: 'Sábados', en: 'Saturdays' },
-  'rest.domingo': { es: 'Domingos', en: 'Sundays' },
-  'rest.cerrado': { es: 'Cerrado', en: 'Closed' },
+  'rest.mon.sat': { es: 'Lunes a Sábado', en: 'Monday to Saturday' },
+  'rest.mon.sat.hours': { es: '12:00 PM – 11:00 PM', en: '12:00 PM – 11:00 PM' },
+  'rest.sun': { es: 'Domingo', en: 'Sunday' },
+  'rest.sun.hours': { es: '12:00 PM – 04:00 PM', en: '12:00 PM – 04:00 PM' },
+  'rest.contact.phone': { es: '+51 990 512 048', en: '+51 990 512 048' },
+  'rest.contact.insta': { es: '@chefpaz.iquitos', en: '@chefpaz.iquitos' },
+  'rest.contact.fb': { es: 'Chef Paz', en: 'Chef Paz' },
+  'rest.contact.email': { es: 'info@chefpaz.pe', en: 'info@chefpaz.pe' },
+  'contact.status.open': { es: 'Abierto Ahora', en: 'Open Now' },
+  'contact.status.closed': { es: 'Cerrado Ahora', en: 'Closed Now' },
+  'contact.response.tag': { es: 'Respuesta en < 15 min', en: 'Replies in < 15 min' },
+  'contact.welcome.note': { es: '¡La Amazonia te espera!', en: 'The Amazon awaits you!' },
+  'contact.hero.tag': { es: 'Contacto con el Chef', en: 'Chef Connection' },
+  'contact.hero.subtitle': { es: 'Llevemos la magia de la Amazonía a su mesa.', en: "Let's bring the magic of the Amazon to your table." },
+  'contact.visit.title': { es: 'Visítanos', en: 'Visit Us' },
+  'contact.form.title': { es: 'Envíanos un mensaje', en: 'Send a Message' },
+  'contact.form.whatsapp.btn': { es: 'Enviar por WhatsApp', en: 'Send via WhatsApp' },
+  'contact.form.whatsapp.note': { es: 'Atención preferencial inmediata', en: 'Immediate preferential attention' },
 
   // Contacto
   'contact.title': { es: 'Contáctanos', en: 'Contact Us' },
@@ -97,6 +114,7 @@ const translations: Translations = {
   'reserva.premium.time.label': { es: 'Horarios disponibles', en: 'Available times' },
   'reserva.premium.cta': { es: 'Confirmar Reserva', en: 'Confirm Reservation' },
   'reserva.paris.hero.title': { es: 'Réservations', en: 'Reservations' },
+  'reserva.paris.hero.brand': { es: 'Chef Paz restaurante', en: 'Chef Paz restaurant' },
   'reserva.paris.hero.cta': { es: 'Réserver une table', en: 'Book a table' },
   'reserva.paris.next': { es: 'Continuar', en: 'Continue' },
   'reserva.paris.back': { es: 'Atrás', en: 'Back' },
@@ -104,21 +122,25 @@ const translations: Translations = {
   'reserva.paris.success': { es: '¡Reserva Iniciada!', en: 'Reservation Initiated!' },
 
   // Testimonials
-  'testimonials.title': { es: 'Lo Que Dicen Nuestros Huéspedes', en: 'What Our Guests Say' },
-  'testimonials.subtitle': { es: 'Historias de quienes han vivido la experiencia Chef Paz', en: 'Stories from those who have lived the Chef Paz experience' },
+  'testimonials.title': { es: 'Experiencias compartidas por nuestros clientes', en: 'Experiences shared by our clients' },
+  'testimonials.subtitle': { es: 'La experiencia Chef Paz a través de los sentidos de nuestros comensales', en: 'The Chef Paz experience through the senses of our diners' },
   'testimonials.p1.text': { es: 'Chef Paz logra interpretar la despensa amazónica con técnica y respeto. Aquí se siente identidad, producto y territorio en cada plato. Es una propuesta que aporta valor real a la cocina peruana contemporánea.', en: 'Chef Paz manages to interpret the Amazonian pantry with technique and respect. Here, identity, product, and territory are felt in every dish. It is a proposal that brings real value to contemporary Peruvian cuisine.' },
   'testimonials.p1.author': { es: 'Pedro Miguel Schiaffino', en: 'Pedro Miguel Schiaffino' },
+  'testimonials.p1.role': { es: 'Chef & Propietario de Malabar', en: 'Chef & Owner of Malabar' },
   'testimonials.p2.text': { es: 'Es inspirador ver cómo un restaurante en la Amazonía eleva nuestros insumos locales a estándares nacionales. Chef Paz demuestra que desde regiones como Loreto se puede competir con excelencia gastronómica.', en: 'It is inspiring to see how a restaurant in the Amazon raises our local ingredients to national standards. Chef Paz proves that regions like Loreto can compete with gastronomic excellence.' },
   'testimonials.p2.author': { es: 'George Forsyth', en: 'George Forsyth' },
+  'testimonials.p2.role': { es: 'Ex Seleccionado Nacional', en: 'Former National Team Player' },
   'testimonials.p3.text': { es: 'La experiencia en Chef Paz es auténtica y sofisticada a la vez. Me encantó cómo combinan sabores amazónicos con una presentación elegante y moderna. Es un lugar al que definitivamente volvería.', en: 'The experience at Chef Paz is both authentic and sophisticated. I loved how they combine Amazonian flavors with an elegant and modern presentation. It is a place I would definitely return to.' },
   'testimonials.p3.author': { es: 'Alondra García Miró', en: 'Alondra García Miró' },
+  'testimonials.p3.role': { es: 'Modelo & Actriz', en: 'Model & Actress' },
   'testimonials.reviews.title': { es: 'Reseñas', en: 'Reviews' },
   'testimonials.reviews.tripadvisor': { es: 'Tripadvisor', en: 'Tripadvisor' },
   'testimonials.reviews.google': { es: 'Google', en: 'Google' },
 
   // Footer
   'footer.rights': { es: 'Todos los derechos reservados', en: 'All rights reserved' },
-  'footer.slogan': { es: 'Donde la gastronomía amazónica se vuelve arte', en: 'Where Amazonian gastronomy becomes art' },
+  'footer.slogan': { es: '"Donde la gastronomía amazónica se vuelve arte"', en: '"Where Amazonian gastronomy becomes art"' },
+  'common.back_to_home': { es: 'Volver al inicio', en: 'Back to home' },
 };
 
 interface LanguageContextType {

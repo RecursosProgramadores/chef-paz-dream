@@ -4,6 +4,38 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logochef from '@/assets/logochef.png';
+import tiktokIcon from '@/assets/logos/tiktok.svg';
+import facebookIcon from '@/assets/logos/facebook.svg';
+import instagramIcon from '@/assets/logos/instagram.svg';
+
+const SocialLinks = ({ className = "" }: { className?: string }) => (
+  <div className={`flex items-center gap-6 ${className}`}>
+    <a href="https://www.instagram.com/chefpaziquitos" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110 active:scale-95" aria-label="Instagram">
+      <img
+        src={instagramIcon}
+        alt="Instagram"
+        className="w-7 h-7 opacity-90 transition-all duration-300"
+        style={{ filter: 'invert(23%) sepia(35%) saturate(1006%) hue-rotate(338deg) brightness(97%) contrast(92%)' }}
+      />
+    </a>
+    <a href="https://www.facebook.com/chefpaziquitos" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110 active:scale-95" aria-label="Facebook">
+      <img
+        src={facebookIcon}
+        alt="Facebook"
+        className="w-7 h-7 opacity-90 transition-all duration-300"
+        style={{ filter: 'invert(23%) sepia(35%) saturate(1006%) hue-rotate(338deg) brightness(97%) contrast(92%)' }}
+      />
+    </a>
+    <a href="https://www.tiktok.com/@chefpaz.iquitos" target="_blank" rel="noopener noreferrer" className="transition-transform hover:scale-110 active:scale-95" aria-label="TikTok">
+      <img
+        src={tiktokIcon}
+        alt="TikTok"
+        className="w-7 h-7 opacity-90 transition-all duration-300"
+        style={{ filter: 'invert(23%) sepia(35%) saturate(1006%) hue-rotate(338deg) brightness(97%) contrast(92%)' }}
+      />
+    </a>
+  </div>
+);
 
 const Header = () => {
   const { lang, setLang, t } = useLanguage();
@@ -28,7 +60,7 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-white shadow-sm ${scrolled ? 'py-3' : 'py-4'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'
         }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
@@ -37,19 +69,20 @@ const Header = () => {
           <img
             src={logochef}
             alt="Chef Paz Logo"
-            className="h-14 md:h-16 w-auto object-contain"
+            className="h-16 md:h-20 w-auto object-contain transition-all duration-500"
+            style={{ filter: 'brightness(0)' }}
           />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-4">
+        <nav className="hidden md:flex items-center gap-2">
           {navItems.map(item => (
             <Link
               key={item.path}
               to={item.path}
-              className={`font-sans-body text-xs font-semibold tracking-widest uppercase transition-all duration-300 px-5 py-2.5 rounded-full ${location.pathname === item.path
-                  ? 'bg-primary text-white shadow-md'
-                  : 'text-foreground/70 hover:bg-primary/10 hover:text-primary'
+              className={`font-sans-body text-xs font-bold tracking-[0.2em] uppercase transition-all duration-300 px-5 py-2.5 rounded-full ${location.pathname === item.path
+                ? 'bg-primary text-white shadow-lg'
+                : 'text-black hover:text-primary'
                 }`}
             >
               {item.label}
@@ -58,25 +91,30 @@ const Header = () => {
         </nav>
 
         {/* Actions */}
-        <div className="hidden md:flex items-center gap-3">
-          <button
-            onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
-            className="text-xs font-sans-body font-bold text-muted-foreground hover:text-primary transition-colors px-3 py-1.5 rounded-full border border-border bg-white"
-          >
-            {lang === 'es' ? 'EN' : 'ES'}
-          </button>
-          <Link
-            to="/reserva"
-            className="bg-cta text-cta-foreground px-6 py-2.5 rounded-md text-sm font-sans-body font-semibold tracking-wide uppercase hover:opacity-90 transition-opacity"
-          >
-            {t('nav.reservar')}
-          </Link>
+        <div className="hidden md:flex items-center gap-8">
+          {/* Social Links - Desktop */}
+          <SocialLinks className="hidden md:flex" />
+
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
+              className="text-xs font-sans-body font-bold transition-all duration-300 px-4 py-2 rounded-full border-2 border-black text-black hover:bg-black hover:text-white"
+            >
+              {lang === 'es' ? 'EN' : 'ES'}
+            </button>
+            <Link
+              to="/reserva"
+              className="bg-cta text-cta-foreground px-7 py-2.5 rounded-full text-xs font-sans-body font-bold tracking-[0.15em] uppercase hover:opacity-90 transition-all hover:scale-105 active:scale-95 shadow-lg whitespace-nowrap"
+            >
+              {t('nav.reservar')}
+            </Link>
+          </div>
         </div>
 
         {/* Mobile hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden relative z-10 p-2 text-foreground transition-colors hover:text-primary"
+          className="md:hidden relative z-10 p-2 transition-colors text-black"
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -102,15 +140,18 @@ const Header = () => {
                   {item.label}
                 </Link>
               ))}
+
+              <SocialLinks className="py-2" />
+
               <button
                 onClick={() => setLang(lang === 'es' ? 'en' : 'es')}
-                className="text-sm font-sans-body font-medium text-muted-foreground border border-border px-3 py-1 rounded"
+                className="text-sm font-sans-body font-medium text-black border-2 border-black px-4 py-1.5 rounded-full"
               >
                 {lang === 'es' ? 'EN' : 'ES'}
               </button>
               <Link
                 to="/reserva"
-                className="bg-cta text-cta-foreground px-8 py-3 rounded-md text-sm font-sans-body font-semibold tracking-wide uppercase"
+                className="bg-cta text-cta-foreground px-8 py-3 rounded-full text-sm font-sans-body font-semibold tracking-wide uppercase"
               >
                 {t('nav.reservar')}
               </Link>

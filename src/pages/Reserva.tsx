@@ -8,9 +8,11 @@ import { Calendar } from '@/components/ui/calendar';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 import restaurantImg from '@/assets/restaurant-interior.jpg';
+import fondoHero from '@/assets/fondohero.png';
 
 const timeSlots = [
-  '19:00', '19:30', '20:00', '20:30', '21:00', '21:30', '22:00',
+  '12:00', '12:30', '13:00', '13:30', '14:00', '14:30', '15:00', '15:30',
+  '19:00', '19:30', '20:00', '20:30', '21:00', '21:30', '22:00', '22:30'
 ];
 
 type Step = 'hero' | 'date' | 'guests' | 'time' | 'form' | 'success';
@@ -80,7 +82,7 @@ const Reserva = () => {
 
   return (
     <PageTransition>
-      <main className="min-h-screen bg-[#0a0a0a] text-[#f5f0e1] font-sans selection:bg-[#d4af37] selection:text-[#0a0a0a]">
+      <main className="min-h-screen relative overflow-hidden selection:bg-primary/30 selection:text-black">
 
         <AnimatePresence mode="wait">
           {step === 'hero' && (
@@ -92,8 +94,8 @@ const Reserva = () => {
               className="relative h-screen flex items-center justify-center overflow-hidden"
             >
               <div className="absolute inset-0 z-0">
-                <img src={restaurantImg} alt="" className="w-full h-full object-cover opacity-40 scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/60 via-transparent to-[#0a0a0a]" />
+                <img src={fondoHero} alt="" className="w-full h-full object-cover opacity-100" />
+                <div className="absolute inset-0 bg-white/20" />
               </div>
 
               <div className="relative z-10 text-center px-6">
@@ -103,13 +105,12 @@ const Reserva = () => {
                   transition={{ delay: 0.2 }}
                   className="block font-serif italic text-[#d4af37] text-xl mb-4"
                 >
-                  Chef Paz Experience
+                  {t('reserva.paris.hero.brand')}
                 </motion.span>
                 <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 }}
-                  className="font-serif text-6xl md:text-8xl lg:text-9xl font-bold mb-12 tracking-tight"
+                  className="font-serif text-6xl md:text-8xl lg:text-9xl font-bold mb-12 tracking-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
                 >
                   {t('reserva.paris.hero.title')}
                 </motion.h1>
@@ -117,10 +118,10 @@ const Reserva = () => {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.6 }}
-                  whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(212, 175, 55, 0.2)" }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(212, 175, 55, 0.4)" }}
                   whileTap={{ scale: 0.95 }}
                   onClick={nextStep}
-                  className="bg-[#d4af37] text-[#0a0a0a] px-12 py-5 rounded-full font-bold text-lg uppercase tracking-widest transition-all"
+                  className="bg-primary text-black px-12 py-5 rounded-full font-bold text-lg uppercase tracking-widest shadow-xl transition-all"
                 >
                   {t('reserva.paris.hero.cta')}
                 </motion.button>
@@ -141,18 +142,18 @@ const Reserva = () => {
               <div className="flex items-center justify-between mb-16">
                 <button
                   onClick={prevStep}
-                  className="flex items-center gap-2 text-[#d4af37] hover:text-[#f5f0e1] transition-colors"
+                  className="flex items-center gap-2 text-black hover:text-primary transition-colors drop-shadow-sm font-bold"
                 >
                   <ArrowLeft size={20} />
                   <span className="font-bold uppercase tracking-widest text-xs">{t('reserva.paris.back')}</span>
                 </button>
-                <div className="font-serif italic text-2xl text-[#d4af37]">
+                <div className="font-serif italic text-2xl text-primary drop-shadow-md">
                   {step === 'date' && '01'}
                   {step === 'guests' && '02'}
                   {step === 'time' && '03'}
                   {step === 'form' && '04'}
-                  <span className="text-[#f5f0e1]/20 mx-2">/</span>
-                  <span className="text-[#f5f0e1]/40">04</span>
+                  <span className="text-black/20 mx-2">/</span>
+                  <span className="text-black/40">04</span>
                 </div>
               </div>
 
@@ -161,22 +162,22 @@ const Reserva = () => {
                 <AnimatePresence mode="wait">
                   {step === 'date' && (
                     <motion.div key="date-step" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-12">
-                      <h2 className="font-serif text-5xl md:text-6xl font-bold leading-tight">
+                      <h2 className="font-serif text-5xl md:text-6xl font-bold leading-tight text-black">
                         {t('reserva.premium.date.label')}
                       </h2>
-                      <div className="flex justify-center bg-[#111] p-8 rounded-3xl border border-[#d4af37]/10">
+                      <div className="flex justify-center bg-white/40 backdrop-blur-3xl p-8 rounded-3xl border border-white/20 shadow-xl">
                         <Calendar
                           mode="single"
                           selected={date}
                           onSelect={(d) => d && setDate(d)}
                           disabled={(d) => d < new Date()}
-                          className="p-0 border-none pointer-events-auto"
+                          className="p-0 border-none pointer-events-auto text-black"
                           classNames={{
-                            day_selected: "bg-[#d4af37] text-[#0a0a0a] hover:bg-[#d4af37] hover:text-[#0a0a0a] focus:bg-[#d4af37] focus:text-[#0a0a0a]",
-                            day_today: "bg-[#d4af37]/10 text-[#d4af37]",
-                            head_cell: "text-[#f5f0e1]/40 font-normal text-xs uppercase tracking-widest",
+                            day_selected: "bg-primary text-black hover:bg-primary hover:text-black focus:bg-primary focus:text-black",
+                            day_today: "bg-primary/20 text-black font-bold",
+                            head_cell: "text-black/40 font-normal text-xs uppercase tracking-widest",
                             cell: "h-12 w-12 text-center text-sm p-0 relative",
-                            day: "h-12 w-12 p-0 font-normal aria-selected:opacity-100 hover:bg-[#d4af37]/20 rounded-full transition-colors",
+                            day: "h-12 w-12 p-0 font-bold text-black aria-selected:opacity-100 hover:bg-primary/20 rounded-full transition-colors",
                           }}
                         />
                       </div>
@@ -185,7 +186,7 @@ const Reserva = () => {
 
                   {step === 'guests' && (
                     <motion.div key="guests-step" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-12">
-                      <h2 className="font-serif text-5xl md:text-6xl font-bold leading-tight">
+                      <h2 className="font-serif text-5xl md:text-6xl font-bold leading-tight text-black">
                         {t('reserva.premium.covers.label')}
                       </h2>
                       <div className="flex flex-wrap gap-4 justify-center">
@@ -194,10 +195,10 @@ const Reserva = () => {
                             key={num}
                             onClick={() => setGuests(num)}
                             className={cn(
-                              "w-20 h-20 rounded-full font-serif text-3xl transition-all duration-300 border flex items-center justify-center",
+                              "w-20 h-20 rounded-full font-serif text-3xl transition-all duration-300 border flex items-center justify-center shadow-sm",
                               guests === num
-                                ? "bg-[#d4af37] text-[#0a0a0a] border-[#d4af37] shadow-[0_0_20px_rgba(212,175,55,0.3)]"
-                                : "bg-transparent text-[#f5f0e1] border-[#f5f0e1]/10 hover:border-[#d4af37]/50"
+                                ? "bg-primary text-black border-primary shadow-xl scale-110"
+                                : "bg-white/60 backdrop-blur-xl text-black border-white/40 hover:border-primary/50"
                             )}
                           >
                             {num}
@@ -209,7 +210,7 @@ const Reserva = () => {
 
                   {step === 'time' && (
                     <motion.div key="time-step" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-12">
-                      <h2 className="font-serif text-5xl md:text-6xl font-bold leading-tight">
+                      <h2 className="font-serif text-5xl md:text-6xl font-bold leading-tight text-black">
                         {t('reserva.premium.time.label')}
                       </h2>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -218,10 +219,10 @@ const Reserva = () => {
                             key={slot}
                             onClick={() => setSelectedTime(slot)}
                             className={cn(
-                              "py-6 rounded-2xl font-serif text-2xl transition-all duration-300 border",
+                              "py-6 rounded-2xl font-serif text-2xl transition-all duration-300 border shadow-sm",
                               selectedTime === slot
-                                ? "bg-[#d4af37] text-[#0a0a0a] border-[#d4af37]"
-                                : "bg-transparent text-[#f5f0e1] border-[#f5f0e1]/10 hover:border-[#d4af37]/50"
+                                ? "bg-primary text-black border-primary shadow-lg scale-105"
+                                : "bg-white/60 backdrop-blur-xl text-black border-white/40 hover:border-primary/50"
                             )}
                           >
                             {slot}
@@ -233,17 +234,17 @@ const Reserva = () => {
 
                   {step === 'form' && (
                     <motion.div key="form-step" variants={variants} initial="initial" animate="animate" exit="exit" className="space-y-12">
-                      <h2 className="font-serif text-5xl md:text-6xl font-bold leading-tight">
+                      <h2 className="font-serif text-5xl md:text-6xl font-bold leading-tight text-black">
                         {t('reserva.nombre')}
                       </h2>
-                      <div className="space-y-12 max-w-lg mx-auto">
+                      <div className="space-y-12 max-w-lg mx-auto bg-white/60 backdrop-blur-3xl p-10 rounded-[2.5rem] border border-white/40 shadow-2xl">
                         <div className="relative group">
                           <input
                             type="text"
                             placeholder={t('reserva.nombre')}
                             value={form.name}
                             onChange={(e) => setForm({ ...form, name: e.target.value })}
-                            className="w-full bg-transparent border-b-2 border-[#f5f0e1]/10 py-4 font-serif text-2xl focus:outline-none focus:border-[#d4af37] transition-colors"
+                            className="w-full bg-black/5 border-b-2 border-primary py-4 font-serif text-2xl focus:outline-none transition-colors text-black placeholder:text-black/30 px-4 rounded-t-xl"
                           />
                         </div>
                         <div className="relative group">
@@ -252,7 +253,7 @@ const Reserva = () => {
                             placeholder={t('reserva.email')}
                             value={form.email}
                             onChange={(e) => setForm({ ...form, email: e.target.value })}
-                            className="w-full bg-transparent border-b-2 border-[#f5f0e1]/10 py-4 font-serif text-2xl focus:outline-none focus:border-[#d4af37] transition-colors"
+                            className="w-full bg-black/5 border-b-2 border-primary py-4 font-serif text-2xl focus:outline-none transition-colors text-black placeholder:text-black/30 px-4 rounded-t-xl"
                           />
                         </div>
                         <div className="relative group">
@@ -261,10 +262,10 @@ const Reserva = () => {
                             placeholder={t('reserva.telefono')}
                             value={form.phone}
                             onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                            className="w-full bg-transparent border-b-2 border-[#f5f0e1]/10 py-4 font-serif text-2xl focus:outline-none focus:border-[#d4af37] transition-colors gap-2"
+                            className="w-full bg-black/5 border-b-2 border-primary py-4 font-serif text-2xl focus:outline-none transition-colors text-black placeholder:text-black/30 px-4 rounded-t-xl gap-2"
                           />
                         </div>
-                        <p className="text-[#f5f0e1]/40 text-sm font-sans italic text-center">
+                        <p className="text-black/80 text-sm font-sans italic text-center font-bold">
                           {t('reserva.paris.policy.note')}
                         </p>
                       </div>
@@ -285,14 +286,14 @@ const Reserva = () => {
                   }
                   onClick={step === 'form' ? handleSubmit : nextStep}
                   className={cn(
-                    "w-full h-20 rounded-full font-bold text-lg uppercase tracking-widest flex items-center justify-center gap-4 transition-all duration-500",
+                    "w-full h-20 rounded-full font-bold text-lg uppercase tracking-widest flex items-center justify-center gap-4 transition-all duration-500 shadow-2xl",
                     ((step === 'date' && !date) || (step === 'time' && !selectedTime))
-                      ? "bg-[#1a1a1a] text-[#f5f0e1]/20 cursor-not-allowed border border-[#f5f0e1]/5"
-                      : "bg-[#f5f0e1] text-[#0a0a0a] hover:bg-[#d4af37]"
+                      ? "bg-black/10 text-black/20 cursor-not-allowed"
+                      : "bg-primary text-black hover:bg-primary/90 hover:scale-[1.02]"
                   )}
                 >
                   {isSubmitting ? (
-                    <div className="w-6 h-6 border-2 border-[#0a0a0a]/30 border-t-[#0a0a0a] rounded-full animate-spin" />
+                    <div className="w-6 h-6 border-2 border-black/30 border-t-black rounded-full animate-spin" />
                   ) : (
                     <>
                       {step === 'form' ? t('reserva.paris.hero.cta') : t('reserva.paris.next')}
@@ -311,16 +312,16 @@ const Reserva = () => {
               animate={{ opacity: 1, scale: 1 }}
               className="h-screen flex flex-col items-center justify-center text-center px-6"
             >
-              <div className="w-24 h-24 rounded-full bg-[#d4af37]/10 flex items-center justify-center text-[#d4af37] mb-8">
+              <div className="w-24 h-24 rounded-full bg-black flex items-center justify-center text-primary mb-8 shadow-xl">
                 <Check size={48} />
               </div>
-              <h2 className="font-serif text-6xl font-bold mb-4">{t('reserva.paris.success')}</h2>
-              <p className="text-[#f5f0e1]/60 text-lg mb-12 max-w-md">{t('reserva.premium.prepay.info')}</p>
+              <h2 className="font-serif text-6xl font-bold mb-4 text-black">{t('reserva.paris.success')}</h2>
+              <p className="text-black/60 text-lg mb-12 max-w-md font-medium">{t('reserva.premium.prepay.info')}</p>
               <button
                 onClick={() => setStep('hero')}
-                className="text-[#d4af37] border-b border-[#d4af37] pb-1 font-bold uppercase tracking-widest text-sm hover:text-[#f5f0e1] hover:border-[#f5f0e1] transition-all"
+                className="text-black border-b-2 border-black pb-1 font-bold uppercase tracking-widest text-sm hover:text-primary hover:border-primary transition-all"
               >
-                Volver al inicio
+                {t('common.back_to_home')}
               </button>
             </motion.section>
           )}
