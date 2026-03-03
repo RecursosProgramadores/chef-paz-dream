@@ -9,11 +9,14 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingReserveButton from "@/components/FloatingReserveButton";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import Experiencia from "./pages/Experiencia";
 import Restaurante from "./pages/Restaurante";
 import Contacto from "./pages/Contacto";
 import Reserva from "./pages/Reserva";
+import Terminos from "./pages/Terminos";
+import Privacidad from "./pages/Privacidad";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +31,8 @@ const AnimatedRoutes = () => {
         <Route path="/restaurante" element={<Restaurante />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/reserva" element={<Reserva />} />
+        <Route path="/terminos" element={<Terminos />} />
+        <Route path="/privacidad" element={<Privacidad />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
@@ -41,6 +46,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Header />
           <AnimatedRoutes />
           <Footer />

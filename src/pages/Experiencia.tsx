@@ -1,11 +1,13 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import AnimatedSection from '@/components/AnimatedSection';
 import PageTransition from '@/components/PageTransition';
-import dishesGrid1 from '@/assets/dishes-grid-1.jpg';
-import restaurantInterior from '@/assets/restaurant-interior.jpg';
-import cocktail from '@/assets/cocktail.jpg';
-import dishesGrid2 from '@/assets/dishes-grid-2.jpg';
+import dishesGrid1 from '@/assets/experiencia/dishes-grid-1.jpg';
+import restaurantInterior from '@/assets/experiencia/local.png';
+import cocktail from '@/assets/experiencia/bebida.png';
+import dishesGrid2 from '@/assets/experiencia/comida.jpg';
 import TestimonialsSection from '@/components/TestimonialsSection';
+import ReviewsSocialSection from '@/components/ReviewsSocialSection';
+import CollageGallery from '@/components/CollageGallery';
 
 const galleryItems = [
   { img: dishesGrid1, titleKey: 'exp.food', descKey: 'exp.food.desc' },
@@ -63,7 +65,10 @@ const Experiencia = () => {
           </div>
         </section>
 
+        <CollageGallery />
+
         <TestimonialsSection />
+        <ReviewsSocialSection />
       </main>
     </PageTransition>
   );

@@ -1,12 +1,13 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import AnimatedSection from '@/components/AnimatedSection';
 import PageTransition from '@/components/PageTransition';
-import { Clock, Phone, Instagram, Facebook, Mail, ExternalLink } from 'lucide-react';
-import restaurantInterior from '@/assets/restaurant-interior.jpg';
-import dishesGrid1 from '@/assets/dishes-grid-1.jpg';
-import heroDish from '@/assets/hero-dish.jpg';
-import cocktail from '@/assets/cocktail.jpg';
-import dishesGrid2 from '@/assets/dishes-grid-2.jpg';
+import { Clock, Phone, Instagram, Facebook, Mail, Download } from 'lucide-react';
+import cartaPdf from '@/assets/CartaChefPaz.pdf';
+import restaurantInterior from '@/assets/images/fondo.png';
+import dishesGrid1 from '@/assets/restaurante/dishes-grid-1.jpg';
+import heroDish from '@/assets/restaurante/carta2.png';
+import cocktail from '@/assets/restaurante/bebida.png';
+import dishesGrid2 from '@/assets/restaurante/carta1.png';
 
 const menuDishes = [
   { img: heroDish, name: { es: 'Paiche a la Brasa', en: 'Grilled Paiche' } },
@@ -69,13 +70,12 @@ const Restaurante = () => {
 
             <div className="text-center">
               <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
+                href={cartaPdf}
+                download="CartaChefPaz.pdf"
                 className="inline-flex items-center gap-2 bg-cta text-cta-foreground px-8 py-3 rounded-md font-sans-body font-semibold text-sm uppercase tracking-widest hover:opacity-90 transition-opacity"
               >
                 {t('rest.ver.carta')}
-                <ExternalLink size={16} />
+                <Download size={16} />
               </a>
             </div>
           </div>

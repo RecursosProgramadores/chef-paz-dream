@@ -3,6 +3,8 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Instagram, Facebook, Phone, Mail } from 'lucide-react';
 import logochef from '@/assets/logochefooter.png';
 import fondofooter from '@/assets/fondofooter.png';
+import libroReclamaciones from '@/assets/logos/libroreclamaciones.jpeg';
+import logoFly from '@/assets/logos/logo.svg';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -20,28 +22,42 @@ const Footer = () => {
       </div>
 
       <div className="relative z-10 container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-white/90">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-white/90 text-center md:text-left">
           {/* Brand */}
-          <div>
-            <Link to="/" className="inline-block mb-6 hover:scale-105 transition-transform">
+          <div className="flex flex-col items-center md:items-start">
+            <Link to="/" className="inline-block mb-8 hover:scale-105 transition-transform">
               <img
                 src={logochef}
                 alt="Chef Paz"
                 className="h-16 md:h-20 w-auto object-contain"
               />
             </Link>
-            <p className="font-serif text-accent italic text-lg mb-4">
+
+            <p className="font-serif text-accent italic text-lg mb-2 text-center md:text-left">
               {t('footer.slogan')}
             </p>
-            <p className="text-white/40 text-sm font-sans-body">
+            <p className="text-white/40 text-xs font-sans-body font-bold tracking-widest uppercase mb-8">
               CHEF PAZ S.A.C.
             </p>
+
+            <a
+              href="https://forms.gle/YaXB1nhvNkimJGUT7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+            >
+              <img
+                src={libroReclamaciones}
+                alt="Libro de Reclamaciones"
+                className="h-16 w-auto rounded-md shadow-lg"
+              />
+            </a>
           </div>
 
           {/* Links */}
           <div>
             <h4 className="font-sans-body font-semibold text-sm uppercase tracking-widest mb-6 text-accent">
-              Links
+              {t('common.links')}
             </h4>
             <div className="flex flex-col gap-3">
               <Link to="/" className="text-white/60 hover:text-primary transition-colors font-sans-body text-sm">{t('nav.chef')}</Link>
@@ -55,7 +71,7 @@ const Footer = () => {
           {/* Social */}
           <div>
             <h4 className="font-sans-body font-semibold text-sm uppercase tracking-widest mb-6 text-accent">
-              Social
+              {t('common.social')}
             </h4>
             <div className="flex gap-4 mb-6">
               <a href="https://wa.me/51990512048" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-primary transition-colors h-10 w-10 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10" aria-label="WhatsApp">
@@ -82,13 +98,38 @@ const Footer = () => {
             <p className="text-white/40 text-xs font-sans-body mt-1">
               +51 990 512 048
             </p>
+            <div className="mt-4 flex flex-col gap-2">
+              <Link to="/terminos" className="text-white/20 hover:text-primary transition-colors text-[10px] font-sans-body uppercase tracking-widest font-bold">
+                {t('footer.terms')}
+              </Link>
+              <Link to="/privacidad" className="text-white/20 hover:text-primary transition-colors text-[10px] font-sans-body uppercase tracking-widest font-bold">
+                {t('footer.privacy')}
+              </Link>
+            </div>
           </div>
         </div>
 
-        <div className="border-t border-white/5 mt-12 pt-8 text-center">
+        <div className="border-t border-white/5 mt-12 pt-8 flex flex-col items-center gap-4">
           <p className="text-white/20 text-xs font-sans-body">
             © {new Date().getFullYear()} Chef Paz S.A.C. — {t('footer.rights')}
           </p>
+          <div className="flex items-center gap-3">
+            <span className="text-white/40 text-[10px] uppercase tracking-[0.2em] font-bold">
+              {t('footer.developed')}
+            </span>
+            <a
+              href="https://fly-software.lovable.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:scale-105 transition-transform"
+            >
+              <img
+                src={logoFly}
+                alt="Fly Software"
+                className="h-7 w-auto object-contain brightness-0 invert opacity-50 hover:opacity-100 transition-opacity"
+              />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

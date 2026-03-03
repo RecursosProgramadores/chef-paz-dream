@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import PageTransition from '@/components/PageTransition';
 import { format } from 'date-fns';
-import { es } from 'date-fns/locale';
+import { es, enUS } from 'date-fns/locale';
 import { CalendarIcon, Users, Clock, ArrowRight, ArrowLeft, ChevronRight, Check } from 'lucide-react';
 import { Calendar } from '@/components/ui/calendar';
 import { cn } from '@/lib/utils';
@@ -47,25 +47,16 @@ const Reserva = () => {
 
   const handleSubmit = () => {
     setIsSubmitting(true);
-    const dateStr = date ? format(date, 'dd/MM/yyyy') : '';
+    const dateStr = date ? format(date, 'PPPP', { locale: lang === 'es' ? es : enUS }) : '';
 
-    const text = lang === 'es'
-      ? `Reserva Visite 2026\n\n` +
-      `👤 Nombre: ${form.name}\n` +
-      `📧 Email: ${form.email}\n` +
-      `📞 Teléfono: ${form.phone}\n` +
-      `👥 Comensales: ${guests}\n` +
-      `📅 Fecha: ${dateStr}\n` +
-      `🕐 Hora: ${selectedTime}\n\n` +
-      `Confirmado vía Web.`
-      : `Visite Reservation 2026\n\n` +
-      `👤 Name: ${form.name}\n` +
-      `📧 Email: ${form.email}\n` +
-      `📞 Phone: ${form.phone}\n` +
-      `👥 Guests: ${guests}\n` +
-      `📅 Date: ${dateStr}\n` +
-      `🕐 Time: ${selectedTime}\n\n` +
-      `Confirmed via Web.`;
+    const text = `${t('reserva.whatsapp.header')}\n\n` +
+      `� ${t('reserva.whatsapp.name')}: ${form.name}\n` +
+      `📧 ${t('reserva.whatsapp.email')}: ${form.email}\n` +
+      `📞 ${t('reserva.whatsapp.phone')}: ${form.phone}\n` +
+      `👥 ${t('reserva.whatsapp.guests')}: ${guests}\n` +
+      `📅 ${t('reserva.whatsapp.date')}: ${dateStr}\n` +
+      `🕐 ${t('reserva.whatsapp.time')}: ${selectedTime}\n\n` +
+      `${t('reserva.whatsapp.footer')}`;
 
     setTimeout(() => {
       window.open(`https://wa.me/51990512048?text=${encodeURIComponent(text)}`, '_blank');
@@ -171,6 +162,7 @@ const Reserva = () => {
                           selected={date}
                           onSelect={(d) => d && setDate(d)}
                           disabled={(d) => d < new Date()}
+                          locale={lang === 'es' ? es : enUS}
                           className="p-0 border-none pointer-events-auto text-black"
                           classNames={{
                             day_selected: "bg-primary text-black hover:bg-primary hover:text-black focus:bg-primary focus:text-black",
@@ -265,9 +257,6 @@ const Reserva = () => {
                             className="w-full bg-black/5 border-b-2 border-primary py-4 font-serif text-2xl focus:outline-none transition-colors text-black placeholder:text-black/30 px-4 rounded-t-xl gap-2"
                           />
                         </div>
-                        <p className="text-black/80 text-sm font-sans italic text-center font-bold">
-                          {t('reserva.paris.policy.note')}
-                        </p>
                       </div>
                     </motion.div>
                   )}

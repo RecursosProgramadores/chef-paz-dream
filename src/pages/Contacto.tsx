@@ -3,10 +3,11 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import AnimatedSection from '@/components/AnimatedSection';
 import PageTransition from '@/components/PageTransition';
 import TropicalLeaf from '@/components/TropicalLeaf';
-import { Phone, Instagram, Facebook, Mail, MapPin, Send, MessageCircle, Clock, Star } from 'lucide-react';
+import { Phone, Instagram, Facebook, Mail, MapPin, Send, Clock, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 import amazoniaBg from '@/assets/amazonia-bg.jpg';
 import fondoHero from '@/assets/fondohero.png';
+import whatsappIcon from '@/assets/logos/whatsapp.svg';
 
 const Contacto = () => {
   const { lang, t } = useLanguage();
@@ -75,7 +76,7 @@ const Contacto = () => {
                           <h3 className="font-sans-body font-bold text-black text-lg mb-2">{t('contact.address')}</h3>
                           <p className="font-sans-body text-black/80 leading-relaxed font-medium">
                             Jr. Putumayo Nro. 468<br />
-                            (entre Tacna y Huallaga)<br />
+                            {t('contact.address.detail')}<br />
                             Iquitos, Loreto, Perú
                           </p>
                         </div>
@@ -83,13 +84,23 @@ const Contacto = () => {
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-black/10">
                         <a href="https://wa.me/51990512048" className="flex items-center gap-4 text-black hover:text-primary transition-all group/link underline-offset-4">
-                          <div className="w-10 h-10 rounded-xl bg-black/5 flex items-center justify-center group-hover/link:bg-black group-hover/link:text-primary">
-                            <MessageCircle size={20} />
+                          <div className="w-10 h-10 rounded-xl bg-black/5 flex items-center justify-center group-hover/link:bg-black group-hover/link:text-primary transition-all duration-300">
+                            <div
+                              className="w-5 h-5 bg-black group-hover/link:bg-primary transition-colors duration-300"
+                              style={{
+                                maskImage: `url(${whatsappIcon})`,
+                                WebkitMaskImage: `url(${whatsappIcon})`,
+                                maskRepeat: 'no-repeat',
+                                WebkitMaskRepeat: 'no-repeat',
+                                maskSize: 'contain',
+                                WebkitMaskSize: 'contain'
+                              }}
+                            />
                           </div>
                           <span className="text-sm font-bold">+51 990 512 048</span>
                         </a>
                         <a href="mailto:info@chefpaz.pe" className="flex items-center gap-4 text-black hover:text-primary transition-all group/link underline-offset-4">
-                          <div className="w-10 h-10 rounded-xl bg-black/5 flex items-center justify-center group-hover/link:bg-black group-hover/link:text-primary">
+                          <div className="w-10 h-10 rounded-xl bg-black/5 flex items-center justify-center group-hover/link:bg-black group-hover/link:text-primary transition-all duration-300">
                             <Mail size={20} />
                           </div>
                           <span className="text-sm font-bold">info@chefpaz.pe</span>
@@ -188,7 +199,7 @@ const Contacto = () => {
                           whileTap={{ scale: 0.98 }}
                           className="w-full bg-[#25D366] text-white px-6 py-4 rounded-xl font-sans-body font-bold text-xs uppercase tracking-widest hover:bg-[#20ba59] transition-all shadow-xl shadow-[#25D366]/20 flex items-center justify-center gap-2 group"
                         >
-                          <MessageCircle size={18} className="group-hover:scale-110 transition-transform" />
+                          <img src={whatsappIcon} alt="WhatsApp" className="w-5 h-5 group-hover:scale-110 transition-transform brightness-0 invert" />
                           {t('contact.form.whatsapp.btn')}
                         </motion.button>
                         <p className="text-primary text-[8px] text-center mt-4 uppercase tracking-widest font-black opacity-80">
@@ -210,7 +221,7 @@ const Contacto = () => {
                           {t('rest.horario')}
                         </span>
                         <h3 className="font-serif text-2xl md:text-3xl text-black outline-none font-bold">
-                          Chef Paz <span className="text-primary italic">Atención</span>
+                          Chef Paz <span className="text-primary italic">{t('contact.hours.tag')}</span>
                         </h3>
                       </div>
                       <div className="flex flex-col items-end gap-2 text-right">

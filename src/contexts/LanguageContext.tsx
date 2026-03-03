@@ -58,9 +58,9 @@ const translations: Translations = {
   'rest.ver.carta': { es: 'Ver Carta Completa', en: 'View Full Menu' },
   'rest.horario': { es: 'Horario de Atención', en: 'Opening Hours' },
   'rest.mon.sat': { es: 'Lunes a Sábado', en: 'Monday to Saturday' },
-  'rest.mon.sat.hours': { es: '12:00 PM – 11:00 PM', en: '12:00 PM – 11:00 PM' },
+  'rest.mon.sat.hours': { es: '12:00 – 16:00 y 19:00 – 21:00', en: '12:00 PM – 4:00 PM and 7:00 PM – 9:00 PM' },
   'rest.sun': { es: 'Domingo', en: 'Sunday' },
-  'rest.sun.hours': { es: '12:00 PM – 04:00 PM', en: '12:00 PM – 04:00 PM' },
+  'rest.sun.hours': { es: '12:00 – 16:00', en: '12:00 PM – 4:00 PM' },
   'rest.contact.phone': { es: '+51 990 512 048', en: '+51 990 512 048' },
   'rest.contact.insta': { es: '@chefpaz.iquitos', en: '@chefpaz.iquitos' },
   'rest.contact.fb': { es: 'Chef Paz', en: 'Chef Paz' },
@@ -113,13 +113,20 @@ const translations: Translations = {
   'reserva.premium.date.label': { es: 'Selecciona la fecha', en: 'Select the date' },
   'reserva.premium.time.label': { es: 'Horarios disponibles', en: 'Available times' },
   'reserva.premium.cta': { es: 'Confirmar Reserva', en: 'Confirm Reservation' },
-  'reserva.paris.hero.title': { es: 'Réservations', en: 'Reservations' },
+  'reserva.paris.hero.title': { es: 'Reserva', en: 'Reservations' },
   'reserva.paris.hero.brand': { es: 'Chef Paz restaurante', en: 'Chef Paz restaurant' },
   'reserva.paris.hero.cta': { es: 'Réserver une table', en: 'Book a table' },
   'reserva.paris.next': { es: 'Continuar', en: 'Continue' },
   'reserva.paris.back': { es: 'Atrás', en: 'Back' },
-  'reserva.paris.policy.note': { es: 'Depósito de 240 OC por persona – deducible del total', en: '240 OC deposit per person – deductible from total' },
   'reserva.paris.success': { es: '¡Reserva Iniciada!', en: 'Reservation Initiated!' },
+  'reserva.whatsapp.header': { es: 'Reserva Chef Paz 2026', en: 'Chef Paz Reservation 2026' },
+  'reserva.whatsapp.name': { es: 'Nombre', en: 'Name' },
+  'reserva.whatsapp.email': { es: 'Email', en: 'Email' },
+  'reserva.whatsapp.phone': { es: 'Teléfono', en: 'Phone' },
+  'reserva.whatsapp.guests': { es: 'Comensales', en: 'Guests' },
+  'reserva.whatsapp.date': { es: 'Fecha', en: 'Date' },
+  'reserva.whatsapp.time': { es: 'Hora', en: 'Time' },
+  'reserva.whatsapp.footer': { es: 'Confirmado vía Web.', en: 'Confirmed via Web.' },
 
   // Testimonials
   'testimonials.title': { es: 'Experiencias compartidas por nuestros clientes', en: 'Experiences shared by our clients' },
@@ -139,8 +146,48 @@ const translations: Translations = {
 
   // Footer
   'footer.rights': { es: 'Todos los derechos reservados', en: 'All rights reserved' },
+  'footer.developed': { es: 'Desarrollado por', en: 'Developed by' },
   'footer.slogan': { es: '"Donde la gastronomía amazónica se vuelve arte"', en: '"Where Amazonian gastronomy becomes art"' },
+  'footer.terms': { es: 'Términos y condiciones', en: 'Terms & Conditions' },
+  'footer.privacy': { es: 'Política de privacidad', en: 'Privacy Policy' },
   'common.back_to_home': { es: 'Volver al inicio', en: 'Back to home' },
+  'common.links': { es: 'Links', en: 'Links' },
+  'common.social': { es: 'Social', en: 'Social' },
+  'contact.address.detail': { es: '(entre Tacna y Huallaga)', en: '(between Tacna and Huallaga)' },
+  'contact.hours.tag': { es: 'Atención', en: 'Service' },
+
+  // Legal Pages
+  'legal.terms.title': { es: 'Términos y Condiciones', en: 'Terms & Conditions' },
+  'legal.privacy.title': { es: 'Política de Privacidad', en: 'Privacy Policy' },
+  'legal.last_update': { es: 'Última actualización: Marzo 2024', en: 'Last updated: March 2024' },
+  'legal.terms.intro': {
+    es: 'Al acceder a Chef Paz, aceptas estos términos y condiciones. Por favor, léelos detenidamente antes de realizar una reserva.',
+    en: 'By accessing Chef Paz, you accept these terms and conditions. Please read them carefully before making a reservation.'
+  },
+  'legal.terms.reservations.title': { es: '1. Reservas', en: '1. Reservations' },
+  'legal.terms.reservations.text': {
+    es: 'Las reservas están sujetas a disponibilidad. Recomendamos llegar 15 minutos antes de la hora acordada.',
+    en: 'Reservations are subject to availability. We recommend arriving 15 minutes before the agreed time.'
+  },
+  'legal.terms.cancellation.title': { es: '2. Cancelaciones', en: '2. Cancellations' },
+  'legal.terms.cancellation.text': {
+    es: 'Solicitamos avisar cualquier cambio o cancelación con al menos 24 horas de anticipación.',
+    en: 'We request that any changes or cancellations be notified at least 24 hours in advance.'
+  },
+  'legal.privacy.intro': {
+    es: 'En Chef Paz, valoramos tu privacidad. Esta política describe cómo manejamos tus datos personales al reservar o contactarnos.',
+    en: 'At Chef Paz, we value your privacy. This policy describes how we handle your personal data when booking or contacting us.'
+  },
+  'legal.privacy.collection.title': { es: 'Información que recolectamos', en: 'Information we collect' },
+  'legal.privacy.collection.text': {
+    es: 'Recogemos nombre, email y teléfono únicamente para gestionar tus reservas y brindarte un mejor servicio.',
+    en: 'We collect name, email, and phone number solely to manage your reservations and provide you with better service.'
+  },
+  'legal.privacy.use.title': { es: 'Uso de la información', en: 'Use of information' },
+  'legal.privacy.use.text': {
+    es: 'Tus datos no serán compartidos con terceros sin tu consentimiento explícito.',
+    en: 'Your data will not be shared with third parties without your explicit consent.'
+  },
 };
 
 interface LanguageContextType {
