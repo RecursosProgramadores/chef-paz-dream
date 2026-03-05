@@ -31,8 +31,6 @@ const timelineData = [
   { year: '2024', label: 'month.nov', key: 'timeline.2024.nov', image: timelineLima24 },
   { year: '2025', label: 'month.jul', key: 'timeline.2025.jul', image: timelineTacna25 },
   { year: '2025', label: 'month.sep', key: 'timeline.2025.sep', image: timelineSummum },
-  { year: '2025', label: 'month.dec', key: 'timeline.2025.dic.loreto', image: amazoniaBg },
-  { year: '2025', label: 'month.dec', key: 'timeline.2025.dic.tenedores', image: interior },
 ];
 
 
@@ -333,8 +331,8 @@ const Index = () => {
                     className="relative group px-1"
                   >
                     <div className={`w-3 h-3 rounded-full border transition-all duration-700 flex items-center justify-center ${Math.floor(i / itemsPerView) === currentIndex
-                        ? "bg-primary border-primary scale-150 rotate-45"
-                        : "bg-black border-white/30 group-hover:border-white group-hover:scale-110"
+                      ? "bg-primary border-primary scale-150 rotate-45"
+                      : "bg-black border-white/30 group-hover:border-white group-hover:scale-110"
                       }`}>
                       <div className={`w-1 h-1 rounded-full ${Math.floor(i / itemsPerView) === currentIndex ? "bg-white" : "bg-white/20"
                         }`} />

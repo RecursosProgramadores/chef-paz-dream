@@ -32,8 +32,6 @@ const translations: Translations = {
   'timeline.2024.nov': { es: 'Perú Mucho Gusto Lima - Noviembre 2024', en: 'Perú Mucho Gusto Lima - November 2024' },
   'timeline.2025.jul': { es: 'Perú Mucho Gusto Tacna - Julio 2025', en: 'Perú Mucho Gusto Tacna - July 2025' },
   'timeline.2025.sep': { es: 'Nominación a los Premios Summum como Mejor Restaurante de la Amazonía - Setiembre 2025', en: 'Summum Awards Nomination as Best Restaurant of the Amazon - September 2025' },
-  'timeline.2025.dic.loreto': { es: 'Revalidación de la Marca Loreto - Dic 2025', en: 'Loreto Brand Revalidation - Dec 2025' },
-  'timeline.2025.dic.tenedores': { es: 'Categorización del restaurante de 3 Tenedores - Dic 2025', en: '3 Forks Restaurant Categorization - Dec 2025' },
   'month.nov': { es: 'Nov', en: 'Nov' },
   'month.jul': { es: 'Jul', en: 'Jul' },
   'month.sep': { es: 'Set', en: 'Sep' },
