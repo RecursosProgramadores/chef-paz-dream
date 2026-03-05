@@ -4,16 +4,18 @@ import PageTransition from '@/components/PageTransition';
 import { Clock, Phone, Instagram, Facebook, Mail, Download } from 'lucide-react';
 import cartaPdf from '@/assets/CartaChefPaz.pdf';
 import restaurantInterior from '@/assets/images/fondo.png';
-import dishesGrid1 from '@/assets/restaurante/dishes-grid-1.jpg';
-import heroDish from '@/assets/restaurante/carta2.png';
-import cocktail from '@/assets/restaurante/bebida.png';
-import dishesGrid2 from '@/assets/restaurante/carta1.png';
+
+// Impactful Images Selection
+import paicheImg from '@/assets/restaurante/plato2.png';
+import juanesImg from '@/assets/restaurante/plato7.png';
+import cocktailsImg from '@/assets/restaurante/bebida3.png';
+import cevicheImg from '@/assets/restaurante/cevicheamazonico.jpg';
 
 const menuDishes = [
-  { img: heroDish, name: { es: 'Paiche a la Brasa', en: 'Grilled Paiche' } },
-  { img: dishesGrid1, name: { es: 'Juanes Amazónicos', en: 'Amazonian Juanes' } },
-  { img: cocktail, name: { es: 'Coctelería Exótica', en: 'Exotic Cocktails' } },
-  { img: dishesGrid2, name: { es: 'Ceviche de la Selva', en: 'Jungle Ceviche' } },
+  { img: paicheImg, name: { es: 'Paiche a la Brasa', en: 'Grilled Paiche' } },
+  { img: juanesImg, name: { es: 'Juanes Amazónicos', en: 'Amazonian Juanes' } },
+  { img: cocktailsImg, name: { es: 'Coctelería Exótica', en: 'Exotic Cocktails' } },
+  { img: cevicheImg, name: { es: 'Ceviche de la Selva', en: 'Jungle Ceviche' } },
 ];
 
 const Restaurante = () => {
@@ -50,18 +52,13 @@ const Restaurante = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
               {menuDishes.map((dish, i) => (
                 <AnimatedSection key={i} delay={i * 0.1}>
-                  <div className="group overflow-hidden rounded-lg">
+                  <div className="group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-500">
                     <div className="aspect-square overflow-hidden">
                       <img
                         src={dish.img}
                         alt={dish.name[lang]}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-110"
                       />
-                    </div>
-                    <div className="p-4 bg-card">
-                      <h3 className="font-serif text-lg font-semibold text-card-foreground">
-                        {dish.name[lang]}
-                      </h3>
                     </div>
                   </div>
                 </AnimatedSection>

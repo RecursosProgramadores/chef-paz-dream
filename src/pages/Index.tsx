@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import AnimatedSection from '@/components/AnimatedSection';
 import PageTransition from '@/components/PageTransition';
 import TropicalLeaf from '@/components/TropicalLeaf';
@@ -15,15 +15,22 @@ import interior from '../assets/restaurant-interior.jpg';
 import dishes1 from '../assets/dishes-grid-1.jpg';
 import dishes2 from '../assets/dishes-grid-2.jpg';
 import heroDish from '../assets/hero-dish.jpg';
+import timelineInnovacion from '../assets/lineatiempo/Premioalainnovacion2023.png';
+import timelineTacna24 from '../assets/lineatiempo/PeruMuchoGustoTacnaJulio2024.png';
+import timelineSummum from '../assets/lineatiempo/Summun2025.png';
+import timelineLima24 from '../assets/lineatiempo/PeruMuchoGustoLima2024.png';
+import timelineTacna25 from '../assets/lineatiempo/PeruMuchoGustoTacna2025.png';
+import timelineInnovacionAlt from '../assets/lineatiempo/PeruMuchoGustoPremioalainnovacion.png';
+import timelineLima23 from '../assets/lineatiempo/PeruMuchoGustoLima2023.png';
 
 
 const timelineData = [
-  { year: '2023', label: 'month.nov', key: 'timeline.2023.nov', image: heroDish },
-  { year: '2024', label: 'month.jul', key: 'timeline.2024.jul', image: interior },
-  { year: '2024', label: 'month.sep', key: 'timeline.2024.sep', image: dishes1 },
-  { year: '2024', label: 'month.nov', key: 'timeline.2024.nov', image: cocktail },
-  { year: '2025', label: 'month.jul', key: 'timeline.2025.jul', image: dishes2 },
-  { year: '2025', label: 'month.sep', key: 'timeline.2025.sep', image: heroDish },
+  { year: '2023', label: 'month.nov', key: 'timeline.2023.nov', image: timelineInnovacion },
+  { year: '2024', label: 'month.jul', key: 'timeline.2024.jul', image: timelineTacna24 },
+  { year: '2024', label: 'month.sep', key: 'timeline.2024.sep', image: timelineSummum },
+  { year: '2024', label: 'month.nov', key: 'timeline.2024.nov', image: timelineLima24 },
+  { year: '2025', label: 'month.jul', key: 'timeline.2025.jul', image: timelineTacna25 },
+  { year: '2025', label: 'month.sep', key: 'timeline.2025.sep', image: timelineSummum },
   { year: '2025', label: 'month.dec', key: 'timeline.2025.dic.loreto', image: amazoniaBg },
   { year: '2025', label: 'month.dec', key: 'timeline.2025.dic.tenedores', image: interior },
 ];
@@ -33,6 +40,35 @@ const timelineData = [
 
 const Index = () => {
   const { t } = useLanguage();
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(2);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        setItemsPerView(1);
+      } else {
+        setItemsPerView(2);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const totalSlides = Math.ceil(timelineData.length / itemsPerView);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % totalSlides);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index);
+  };
 
   // Parallax for hero
   const heroRef = useRef(null);
@@ -216,61 +252,96 @@ const Index = () => {
               </h2>
             </AnimatedSection>
 
-            <div className="relative overflow-hidden group">
-              {/* Infinite Horizontal Scroll Container */}
-              <motion.div
-                className="flex gap-20 md:gap-32 px-4 whitespace-nowrap"
-                animate={{
-                  x: [0, "-50%"],
-                }}
-                transition={{
-                  duration: 60,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                whileHover={{ animationPlayState: 'paused' }}
-              >
-                {/* Double the data for seamless infinite loop */}
-                {[...timelineData, ...timelineData].map((item, i) => (
-                  <div key={i} className="flex flex-col w-[300px] md:w-[450px] lg:w-[550px] flex-shrink-0">
-                    {/* Year at the top */}
-                    <span className="font-sans font-bold text-6xl md:text-7xl lg:text-8xl text-white/20 mb-6 tracking-tighter">
-                      {item.year}
-                    </span>
+            <div className="relative group">
+              {/* Carousel Container */}
+              <div className="overflow-hidden">
+                <motion.div
+                  className="flex transition-transform duration-700 ease-in-out"
+                  animate={{
+                    x: `-${currentIndex * 100}%`,
+                  }}
+                >
+                  {/* Group items by itemsPerView */}
+                  {Array.from({ length: totalSlides }).map((_, slideIndex) => (
+                    <div key={slideIndex} className="flex min-w-full gap-8 md:gap-12 lg:gap-16 px-4">
+                      {timelineData
+                        .slice(slideIndex * itemsPerView, slideIndex * itemsPerView + itemsPerView)
+                        .map((item, i) => (
+                          <div
+                            key={i}
+                            className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-10 flex-1 min-w-0 group/item"
+                          >
+                            {/* Vertical Image Frame */}
+                            <div className="w-full md:w-72 lg:w-80 h-[450px] md:h-[500px] flex-shrink-0 border border-white/20 p-1.5 bg-black/40 backdrop-blur-sm shadow-2xl relative overflow-hidden group-hover/item:border-primary/50 transition-all duration-700">
+                              <img
+                                src={item.image}
+                                alt=""
+                                className="w-full h-full object-cover grayscale opacity-60 group-hover/item:grayscale-0 group-hover/item:opacity-100 group-hover/item:scale-105 transition-all duration-1000"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
+                            </div>
 
-                    {/* Image Frame and Description side-by-side */}
-                    <div className="flex items-start gap-6 group/item">
-                      <div className="w-40 h-28 md:w-52 md:h-36 flex-shrink-0 border border-white/30 p-1 bg-black/40 backdrop-blur-sm shadow-xl relative overflow-hidden">
-                        <img
-                          src={item.image}
-                          alt=""
-                          className="w-full h-full object-cover grayscale opacity-60 group-hover/item:grayscale-0 group-hover/item:opacity-100 transition-all duration-700"
-                        />
-                      </div>
-                      <div className="flex-1 pt-1 whitespace-normal">
-                        <span className="font-sans text-base text-primary/80 font-bold block mb-2 uppercase tracking-widest">
-                          {t(item.label)}
-                        </span>
-                        <p className="font-sans-body text-background/80 text-sm md:text-base lg:text-lg leading-relaxed line-clamp-4">
-                          {t(item.key)}
-                        </p>
-                      </div>
+                            {/* Content Section */}
+                            <div className="flex-1 text-center md:text-left pt-2">
+                              <div className="flex flex-col gap-1 mb-6">
+                                <span className="font-sans font-black text-6xl md:text-7xl lg:text-8xl text-white/5 tracking-tighter group-hover/item:text-primary/10 transition-colors duration-700 block leading-none">
+                                  {item.year}
+                                </span>
+                                <span className="font-sans text-lg md:text-xl text-primary font-bold uppercase tracking-[0.3em]">
+                                  {t(item.label)}
+                                </span>
+                              </div>
+
+                              <div className="h-[2px] w-12 bg-primary/30 mb-6 mx-auto md:mx-0 group-hover/item:w-24 transition-all duration-700" />
+
+                              <p className="font-sans-body text-background/80 text-base md:text-lg lg:text-xl leading-relaxed lg:leading-loose">
+                                {t(item.key)}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
                     </div>
-                  </div>
-                ))}
-              </motion.div>
+                  ))}
+                </motion.div>
+              </div>
+
+              {/* Navigation Arrows */}
+              <button
+                onClick={prevSlide}
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 lg:-translate-x-20 z-20 w-14 h-14 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 hidden xl:flex"
+              >
+                <ChevronDown className="rotate-90" size={28} />
+              </button>
+              <button
+                onClick={nextSlide}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 lg:translate-x-20 z-20 w-14 h-14 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-white hover:bg-primary hover:border-primary hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 hidden xl:flex"
+              >
+                <ChevronDown className="-rotate-90" size={28} />
+              </button>
             </div>
 
-            {/* Progress Line at bottom (as seen in reference) */}
-            <div className="mt-12 relative w-full h-[1px] bg-white/20">
-              <div className="absolute inset-0 flex justify-between px-6 -translate-y-1/2">
+            {/* Individual Item Dots (Guide points) */}
+            <div className="mt-24 relative w-full h-[1px] bg-white/10 max-w-5xl mx-auto">
+              <div className="absolute inset-0 flex justify-between px-2 md:px-0 -translate-y-1/2">
                 {timelineData.map((_, i) => (
-                  <div
+                  <button
                     key={i}
-                    className="w-4 h-4 rounded-full bg-black border border-white/60 z-10 group cursor-pointer hover:border-white transition-colors flex items-center justify-center"
+                    onClick={() => {
+                      const slideIdx = Math.floor(i / itemsPerView);
+                      goToSlide(slideIdx);
+                    }}
+                    className="relative group px-1"
                   >
-                    <div className="w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-white transition-colors" />
-                  </div>
+                    <div className={`w-3 h-3 rounded-full border transition-all duration-700 flex items-center justify-center ${Math.floor(i / itemsPerView) === currentIndex
+                        ? "bg-primary border-primary scale-150 rotate-45"
+                        : "bg-black border-white/30 group-hover:border-white group-hover:scale-110"
+                      }`}>
+                      <div className={`w-1 h-1 rounded-full ${Math.floor(i / itemsPerView) === currentIndex ? "bg-white" : "bg-white/20"
+                        }`} />
+                    </div>
+
+                    {/* Tooltip or small highlight on hover could go here */}
+                  </button>
                 ))}
               </div>
             </div>

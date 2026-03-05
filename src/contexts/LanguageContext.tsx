@@ -115,7 +115,7 @@ const translations: Translations = {
   'reserva.premium.cta': { es: 'Confirmar Reserva', en: 'Confirm Reservation' },
   'reserva.paris.hero.title': { es: 'Reserva', en: 'Reservations' },
   'reserva.paris.hero.brand': { es: 'Chef Paz restaurante', en: 'Chef Paz restaurant' },
-  'reserva.paris.hero.cta': { es: 'Réserver une table', en: 'Book a table' },
+  'reserva.paris.hero.cta': { es: 'Reservar una mesa', en: 'Reserve a table' },
   'reserva.paris.next': { es: 'Continuar', en: 'Continue' },
   'reserva.paris.back': { es: 'Atrás', en: 'Back' },
   'reserva.paris.success': { es: '¡Reserva Iniciada!', en: 'Reservation Initiated!' },
