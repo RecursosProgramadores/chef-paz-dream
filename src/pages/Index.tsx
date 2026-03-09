@@ -156,7 +156,7 @@ const Index = () => {
                   delay: 0.5,
                   ease: [0.16, 1, 0.3, 1]
                 }}
-                className="hidden lg:block relative"
+                className="relative mt-12 lg:mt-0"
               >
                 <div className="relative z-10 group">
                   <motion.div
@@ -173,7 +173,7 @@ const Index = () => {
                     <img
                       src={perfilpaz}
                       alt="Chef Gabriel Garhy Nogueira Paz"
-                      className="w-full max-w-lg mx-auto h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-transform duration-700 group-hover:scale-[1.02]"
+                      className="w-full max-w-[280px] sm:max-w-md lg:max-w-lg mx-auto h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-transform duration-700 group-hover:scale-[1.02]"
                     />
                     {/* Professional reflection/shine effect */}
                     <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 to-transparent opacity-0 group-hover:opacity-40 transition-opacity duration-700 pointer-events-none rounded-full" />
