@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import PageTransition from '@/components/PageTransition';
-import { format } from 'date-fns';
+import { format, startOfToday } from 'date-fns';
 import { es, enUS } from 'date-fns/locale';
 import { CalendarIcon, Users, Clock, ArrowRight, ArrowLeft, ChevronRight, Check } from 'lucide-react';
 import { Calendar } from '@/components/ui/calendar';
@@ -161,7 +161,7 @@ const Reserva = () => {
                           mode="single"
                           selected={date}
                           onSelect={(d) => d && setDate(d)}
-                          disabled={(d) => d < new Date()}
+                          disabled={(d) => d < startOfToday()}
                           locale={lang === 'es' ? es : enUS}
                           className="p-0 border-none pointer-events-auto text-black"
                           classNames={{
@@ -297,21 +297,42 @@ const Reserva = () => {
           {step === 'success' && (
             <motion.section
               key="success"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="h-screen flex flex-col items-center justify-center text-center px-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="relative h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden"
             >
-              <div className="w-24 h-24 rounded-full bg-black flex items-center justify-center text-primary mb-8 shadow-xl">
-                <Check size={48} />
+              <div className="absolute inset-0 z-0">
+                <img src={fondoHero} alt="" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-white/40 backdrop-blur-sm" />
               </div>
-              <h2 className="font-serif text-6xl font-bold mb-4 text-black">{t('reserva.paris.success')}</h2>
-              <p className="text-black/60 text-lg mb-12 max-w-md font-medium">{t('reserva.premium.prepay.info')}</p>
-              <button
-                onClick={() => setStep('hero')}
-                className="text-black border-b-2 border-black pb-1 font-bold uppercase tracking-widest text-sm hover:text-primary hover:border-primary transition-all"
-              >
-                {t('common.back_to_home')}
-              </button>
+
+              <div className="relative z-10 flex flex-col items-center max-w-2xl bg-white/60 backdrop-blur-2xl p-12 rounded-[3rem] border border-white/40 shadow-[0_32px_64px_rgba(0,0,0,0.15)]">
+                <motion.div
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 15 }}
+                  className="w-24 h-24 rounded-full bg-primary flex items-center justify-center text-black mb-10 shadow-2xl"
+                >
+                  <Check size={48} />
+                </motion.div>
+
+                <h2 className="font-serif text-5xl md:text-6xl font-bold mb-6 text-black">
+                  {t('reserva.paris.success')}
+                </h2>
+
+                <p className="font-sans-body text-black/80 text-xl mb-12 font-medium leading-relaxed">
+                  {t('reserva.premium.prepay.info')}
+                </p>
+
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setStep('hero')}
+                  className="bg-black text-white px-10 py-4 rounded-full font-bold uppercase tracking-[0.2em] text-sm hover:bg-primary hover:text-black transition-all shadow-xl"
+                >
+                  {t('common.back_to_home')}
+                </motion.button>
+              </div>
             </motion.section>
           )}
         </AnimatePresence>

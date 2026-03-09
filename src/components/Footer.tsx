@@ -41,7 +41,7 @@ const Footer = () => {
             </p>
 
             <a
-              href="https://forms.gle/YaXB1nhvNkimJGUT7"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeEGklZnnad7KeN6e--ahbwYDYZOU_l6XjZm4h0oNVy3WxH2A/viewform?usp=publish-editor"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:opacity-80 transition-opacity"

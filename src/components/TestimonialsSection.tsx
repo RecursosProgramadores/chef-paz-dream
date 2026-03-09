@@ -10,7 +10,7 @@ const testimonials = [
   {
     key: 'testimonials.p1',
     image: pedroImg,
-    className: "scale-100"
+    className: "scale-[1.1] md:scale-[1.15]"
   },
   {
     key: 'testimonials.p2',

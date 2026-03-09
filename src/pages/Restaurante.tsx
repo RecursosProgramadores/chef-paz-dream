@@ -1,21 +1,21 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import AnimatedSection from '@/components/AnimatedSection';
 import PageTransition from '@/components/PageTransition';
-import { Clock, Phone, Instagram, Facebook, Mail, Download } from 'lucide-react';
+import { Clock, Phone, Instagram, Facebook, Mail, Eye } from 'lucide-react';
 import cartaPdf from '@/assets/CartaChefPaz.pdf';
 import restaurantInterior from '@/assets/images/fondo.png';
 
 // Impactful Images Selection
-import paicheImg from '@/assets/restaurante/plato2.png';
-import juanesImg from '@/assets/restaurante/plato7.png';
-import cocktailsImg from '@/assets/restaurante/bebida3.png';
-import cevicheImg from '@/assets/restaurante/cevicheamazonico.jpg';
+import paicheImg from '@/assets/restaurante/Causaacevichada.png';
+import juanesImg from '@/assets/restaurante/ChaufaAmazonico.png';
+import cocktailsImg from '@/assets/restaurante/Tacachoconcecina.png';
+import cevicheImg from '@/assets/restaurante/Venadoestofadoalmalbec.png';
 
 const menuDishes = [
-  { img: paicheImg, name: { es: 'Paiche a la Brasa', en: 'Grilled Paiche' } },
-  { img: juanesImg, name: { es: 'Juanes Amazónicos', en: 'Amazonian Juanes' } },
-  { img: cocktailsImg, name: { es: 'Coctelería Exótica', en: 'Exotic Cocktails' } },
-  { img: cevicheImg, name: { es: 'Ceviche de la Selva', en: 'Jungle Ceviche' } },
+  { img: paicheImg, name: { es: 'Causa Acevichada', en: 'Causa Acevichada' } },
+  { img: juanesImg, name: { es: 'Chaufa Amazónico', en: 'Amazonian Chaufa' } },
+  { img: cocktailsImg, name: { es: 'Tacacho con Cecina', en: 'Tacacho with Cecina' } },
+  { img: cevicheImg, name: { es: 'Venado Estofado al Malbec', en: 'Malbec Braised Venison' } },
 ];
 
 const Restaurante = () => {
@@ -52,13 +52,19 @@ const Restaurante = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
               {menuDishes.map((dish, i) => (
                 <AnimatedSection key={i} delay={i * 0.1}>
-                  <div className="group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-500">
-                    <div className="aspect-square overflow-hidden">
+                  <div className="group bg-card rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-border/50 overflow-hidden">
+                    <div className="aspect-square overflow-hidden relative">
                       <img
                         src={dish.img}
                         alt={dish.name[lang]}
                         className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-110"
                       />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+                    </div>
+                    <div className="p-6 text-center">
+                      <h3 className="font-serif text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                        {dish.name[lang]}
+                      </h3>
                     </div>
                   </div>
                 </AnimatedSection>
@@ -67,12 +73,13 @@ const Restaurante = () => {
 
             <div className="text-center">
               <a
-                href={cartaPdf}
-                download="CartaChefPaz.pdf"
+                href="https://drive.google.com/file/d/1cTLP_8-xzqJKu8qKPZibsTdIhLu53UFl/view?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-cta text-cta-foreground px-8 py-3 rounded-md font-sans-body font-semibold text-sm uppercase tracking-widest hover:opacity-90 transition-opacity"
               >
                 {t('rest.ver.carta')}
-                <Download size={16} />
+                <Eye size={16} />
               </a>
             </div>
           </div>

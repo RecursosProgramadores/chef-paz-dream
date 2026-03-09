@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import whatsappIcon from '@/assets/logos/whatsapp.svg';
 
 const WhatsAppButton = () => {
-    const phoneNumber = "51965903960";
+    const phoneNumber = "51990512048";
     const message = encodeURIComponent("Hola Chef Paz, me gustaría realizar una consulta.");
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 

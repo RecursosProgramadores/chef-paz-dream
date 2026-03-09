@@ -11,7 +11,7 @@ const ReviewsSocialSection: React.FC = () => {
     const reviews = [
         {
             name: 'Tripadvisor',
-            rating: '4.0 / 5',
+            rating: '4.3 / 5',
             count: '900+',
             link: 'https://www.tripadvisor.com.pe/Restaurant_Review-g294315-d7216625-Reviews-Chef_Paz_Restaurant-Iquitos_Loreto_Region.html',
             color: '#00AF87',
@@ -20,7 +20,7 @@ const ReviewsSocialSection: React.FC = () => {
         {
             name: 'Google',
             rating: '4.3 / 5',
-            count: '1800+',
+            count: '900+',
             link: 'https://maps.app.goo.gl/4Zao52WsgnqWM9y39',
             color: '#4285F4',
             logo: logoGoogle
